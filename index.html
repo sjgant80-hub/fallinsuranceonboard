@@ -1,0 +1,1705 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>◊ FallInsuranceOnboard · sovereign UK insurance broker IDD CDD + demands & needs</title>
+<meta name="description" content="Sovereign IDD-shaped onboarding for UK insurance brokers: client category (consumer / commercial / large risk), demands & needs library, commercial AML CDD with PSC + beneficial ownership, PEP & sanctions, vulnerable customer (FG21/1), document capture with SHA-256, audit chain. IDB-only · device-local · single HTML file.">
+<meta name="prime" content="839">
+<meta name="theme-color" content="#0b0a0f">
+<meta name="application-name" content="FallInsuranceOnboard">
+<meta name="color-scheme" content="dark">
+<link rel="icon" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' fill='%230b0a0f' rx='10'/><text x='32' y='44' font-family='Georgia,serif' font-size='34' font-weight='700' text-anchor='middle' fill='%23b8974a'>%E2%97%8A</text></svg>">
+<link rel="manifest" href='data:application/manifest+json,{"name":"FallInsuranceOnboard","short_name":"insonboard","start_url":"./","display":"standalone","orientation":"any","background_color":"%230b0a0f","theme_color":"%23b8974a","description":"Sovereign IDD-shaped onboarding for UK insurance brokers","icons":[{"src":"data:image/svg+xml;utf8,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 192 192%27><rect width=%27192%27 height=%27192%27 fill=%27%230b0a0f%27 rx=%2728%27/><text x=%2796%27 y=%27138%27 font-family=%27Georgia, serif%27 font-size=%27124%27 font-weight=%27700%27 text-anchor=%27middle%27 fill=%27%23b8974a%27>%E2%97%8A</text></svg>","sizes":"192x192","type":"image/svg+xml","purpose":"any"}]}'>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=DM+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --void:#0b0a0f;--void-2:#13121a;--ink:#1a1922;--ink-2:#22212c;
+  --line:#2a2934;--line-soft:#1f1e28;
+  --cream:#e6e1d6;--cream-dim:#a8a395;--cream-muted:#6e6a5e;
+  --brass:#b8974a;--amber:#ff8c00;--ox:#8b1a1a;--ox-2:#5e1212;
+  --green:#4ade80;--red:#ef4444;--blue:#60a5fa;--yellow:#fbbf24;--violet:#a78bfa;
+  --serif:'Libre Baskerville',Georgia,ui-serif,serif;
+  --sans:'DM Sans','Inter',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+  --mono:'IBM Plex Mono','SF Mono',ui-monospace,Menlo,monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{background:var(--void);color:var(--cream);font:14px/1.55 var(--sans);min-height:100dvh;-webkit-font-smoothing:antialiased;-webkit-tap-highlight-color:transparent}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:0.035;background-image:radial-gradient(circle at 25% 30%, var(--brass) 0, transparent 1px), radial-gradient(circle at 75% 70%, var(--cream) 0, transparent 1px);background-size:3px 3px,5px 5px;mix-blend-mode:overlay}
+button{font-family:inherit;cursor:pointer;background:transparent;border:none;color:inherit}
+input,textarea,select{font-family:inherit;background:var(--ink);border:1px solid var(--line);color:var(--cream);border-radius:3px;padding:8px 11px;outline:none;font-size:13px;width:100%}
+input:focus,textarea:focus,select:focus{border-color:var(--brass)}
+textarea{resize:vertical;min-height:60px;line-height:1.5}
+a{color:var(--brass);text-decoration:none}
+a:hover{color:var(--amber)}
+::-webkit-scrollbar{width:9px;height:9px}::-webkit-scrollbar-track{background:var(--void)}::-webkit-scrollbar-thumb{background:var(--line);border-radius:3px}::-webkit-scrollbar-thumb:hover{background:var(--brass)}
+
+.app{min-height:100dvh;display:grid;grid-template-rows:auto 1fr;position:relative;z-index:1}
+header{display:flex;align-items:center;border-bottom:1px solid var(--line);background:var(--void-2);user-select:none;flex-wrap:wrap;min-height:52px}
+.brand{display:flex;align-items:center;gap:11px;padding:10px 18px;border-right:1px solid var(--line)}
+.brand .mark{width:30px;height:30px;background:linear-gradient(135deg,var(--brass),var(--amber));border-radius:5px;display:grid;place-items:center;font-family:var(--serif);font-weight:700;font-size:17px;color:var(--void)}
+.brand .name{font-family:var(--serif);font-weight:700;font-size:15px;letter-spacing:0.01em}
+.brand .seal{font-family:var(--mono);font-size:9px;color:var(--cream-muted);letter-spacing:0.18em;text-transform:uppercase;margin-top:1px}
+
+nav.tabs{display:flex;flex:1;overflow-x:auto;align-items:stretch}
+nav.tabs button{padding:0 18px;font-size:12px;color:var(--cream-dim);letter-spacing:0.04em;display:flex;align-items:center;gap:6px;border-right:1px solid var(--line-soft);height:52px;white-space:nowrap;border-top:2px solid transparent;font-weight:500}
+nav.tabs button:hover{background:var(--ink);color:var(--cream)}
+nav.tabs button.active{background:var(--ink);color:var(--brass);border-top-color:var(--brass)}
+nav.tabs .tcount{font-family:var(--mono);font-size:9px;color:var(--cream-muted);background:var(--ink-2);padding:1px 6px;border-radius:8px;margin-left:4px}
+
+.tools-r{display:flex;align-items:center;gap:6px;padding:0 14px;height:52px;border-left:1px solid var(--line);margin-left:auto}
+.tool-btn{padding:5px 11px;border-radius:3px;font-size:11px;color:var(--cream-dim);letter-spacing:0.06em;text-transform:uppercase;font-family:var(--mono);border:1px solid var(--line)}
+.tool-btn:hover{background:var(--ink);color:var(--cream);border-color:var(--brass)}
+.tool-btn.primary{background:var(--brass);color:var(--void);border-color:var(--brass);font-weight:600}
+.tool-btn.primary:hover{background:var(--amber);border-color:var(--amber)}
+.tool-btn.t3{border-color:var(--blue);color:var(--blue)}
+
+main{padding:18px 22px 80px;overflow-y:auto;max-width:1280px;margin:0 auto;width:100%}
+@media (max-width:640px){main{padding:14px 12px 80px}.brand{padding:8px 12px}.brand .seal{display:none}nav.tabs button{padding:0 12px;font-size:11px}}
+
+.disclaimer{background:linear-gradient(180deg,rgba(139,26,26,0.18),rgba(139,26,26,0.08));border:1px solid var(--ox);border-left:3px solid var(--ox);border-radius:3px;padding:12px 16px;margin-bottom:18px;font-size:12px;color:var(--cream);line-height:1.5}
+.disclaimer strong{color:var(--brass);font-family:var(--serif)}
+
+.section-h{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:14px;gap:14px;flex-wrap:wrap}
+.section-h h2{font-family:var(--serif);font-size:20px;font-weight:700;letter-spacing:0.01em}
+.section-h .sub{font-family:var(--mono);font-size:11px;color:var(--cream-muted);letter-spacing:0.08em;text-transform:uppercase}
+.section-h .actions{display:flex;gap:6px;flex-wrap:wrap}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media (max-width:680px){.grid-2{grid-template-columns:1fr}}
+.card{background:var(--void-2);border:1px solid var(--line);border-radius:4px;padding:16px 18px}
+.card h3{font-family:var(--serif);font-size:15px;font-weight:700;margin-bottom:10px;color:var(--cream);letter-spacing:0.01em}
+.card h3 .meta{font-family:var(--mono);font-size:10px;color:var(--brass);letter-spacing:0.1em;margin-left:8px;font-weight:400}
+
+.kpi{display:flex;justify-content:space-between;align-items:baseline;padding:7px 0;border-bottom:1px dashed var(--line-soft);font-size:13px;gap:10px}
+.kpi:last-child{border-bottom:none}
+.kpi .l{color:var(--cream-dim)}
+.kpi .v{font-family:var(--mono);color:var(--cream);font-weight:500;text-align:right}
+.kpi .v.green{color:var(--green)}.kpi .v.red{color:var(--red)}.kpi .v.amber{color:var(--amber)}.kpi .v.brass{color:var(--brass)}.kpi .v.blue{color:var(--blue)}
+
+.row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px}
+.row3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:10px}
+@media (max-width:520px){.row,.row3{grid-template-columns:1fr}}
+.field{margin-bottom:10px}
+.field label{display:block;font-family:var(--mono);font-size:10px;color:var(--cream-muted);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:4px}
+.field .hint{font-size:11px;color:var(--cream-muted);margin-top:4px;font-family:var(--mono);line-height:1.4}
+.field .req{color:var(--ox);margin-left:3px}
+
+.btn{padding:8px 15px;border:1px solid var(--brass);border-radius:3px;font-size:12px;color:var(--cream);background:transparent;letter-spacing:0.04em;cursor:pointer;font-family:inherit;display:inline-flex;align-items:center;gap:6px}
+.btn:hover{border-color:var(--amber);color:var(--amber)}
+.btn.primary{background:var(--brass);color:var(--void);border-color:var(--brass);font-weight:600}
+.btn.primary:hover{background:var(--amber);border-color:var(--amber);color:var(--void)}
+.btn.danger{border-color:var(--ox);color:var(--ox)}
+.btn.danger:hover{background:var(--ox);color:var(--cream);border-color:var(--ox)}
+.btn.ghost{border-color:var(--line);color:var(--cream-dim)}
+.btn.ghost:hover{border-color:var(--brass);color:var(--brass)}
+.btn.sm{padding:5px 10px;font-size:11px}
+.btn:disabled{opacity:0.45;cursor:not-allowed}
+
+table{width:100%;border-collapse:collapse;font-size:13px;margin-top:8px}
+th,td{padding:9px 11px;border-bottom:1px solid var(--line-soft);text-align:left;vertical-align:middle}
+th{color:var(--brass);font-family:var(--mono);font-size:10px;letter-spacing:0.08em;text-transform:uppercase;font-weight:600;background:var(--void-2);position:sticky;top:0}
+td.r{text-align:right;font-family:var(--mono)}
+tr.row-link{cursor:pointer}
+tr.row-link:hover td{background:var(--ink)}
+
+.tag{display:inline-block;padding:2px 8px;border-radius:11px;font-family:var(--mono);font-size:10px;letter-spacing:0.06em;text-transform:uppercase;border:1px solid var(--brass);color:var(--brass);margin-right:4px;line-height:1.5}
+.tag.amber{border-color:var(--amber);color:var(--amber)}
+.tag.green{border-color:var(--green);color:var(--green)}
+.tag.red{border-color:var(--red);color:var(--red)}
+.tag.blue{border-color:var(--blue);color:var(--blue)}
+.tag.muted{border-color:var(--cream-muted);color:var(--cream-muted)}
+.tag.violet{border-color:var(--violet);color:var(--violet)}
+.tag.ox{border-color:var(--ox);color:var(--ox)}
+
+.chip-row{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
+.chip{padding:5px 11px;border-radius:14px;border:1px solid var(--line);color:var(--cream-dim);font-size:11px;font-family:var(--mono);letter-spacing:0.04em;cursor:pointer;text-transform:lowercase;background:var(--void-2)}
+.chip:hover{border-color:var(--brass);color:var(--cream)}
+.chip.active{background:var(--brass);color:var(--void);border-color:var(--brass);font-weight:600}
+.chip.due{background:var(--ox);color:var(--cream);border-color:var(--ox)}
+
+.wizard{max-width:780px;margin:0 auto}
+.wizard-steps{display:flex;gap:4px;margin-bottom:22px;overflow-x:auto;padding-bottom:6px}
+.wstep{flex:1 1 0;min-width:64px;padding:6px 8px;background:var(--void-2);border:1px solid var(--line);border-radius:3px;font-size:10px;color:var(--cream-muted);text-align:center;font-family:var(--mono);letter-spacing:0.04em;text-transform:uppercase;cursor:pointer}
+.wstep.done{border-color:var(--green);color:var(--green)}
+.wstep.active{background:var(--brass);color:var(--void);border-color:var(--brass);font-weight:600}
+.wstep.skip{opacity:0.4}
+.wstep .n{font-size:13px;display:block;font-weight:600}
+.wizard-body{background:var(--void-2);border:1px solid var(--line);border-radius:4px;padding:22px;min-height:420px}
+.wizard-body h3{font-family:var(--serif);font-size:18px;margin-bottom:6px;color:var(--brass)}
+.wizard-body .step-sub{color:var(--cream-dim);font-size:12px;margin-bottom:18px;font-style:italic}
+.wizard-foot{display:flex;justify-content:space-between;margin-top:18px;gap:10px}
+
+.dz{border:2px dashed var(--line);border-radius:6px;padding:24px;text-align:center;background:var(--ink);transition:0.18s;cursor:pointer}
+.dz:hover,.dz.hover{border-color:var(--brass);background:var(--ink-2)}
+.dz .icon{font-size:32px;color:var(--brass);font-family:var(--serif)}
+.dz .label{font-family:var(--mono);font-size:11px;color:var(--cream-dim);letter-spacing:0.08em;text-transform:uppercase;margin-top:8px}
+.doc-list{margin-top:14px;display:flex;flex-direction:column;gap:7px}
+.doc-row{display:flex;align-items:center;gap:10px;padding:10px 12px;background:var(--ink);border:1px solid var(--line);border-radius:3px;font-size:12px;flex-wrap:wrap}
+.doc-row .dtype{font-family:var(--mono);font-size:10px;color:var(--brass);text-transform:uppercase;padding:2px 6px;border:1px solid var(--brass);border-radius:2px}
+.doc-row .dname{flex:1;color:var(--cream);font-weight:500;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:120px}
+.doc-row .dmeta{font-family:var(--mono);font-size:10px;color:var(--cream-muted)}
+.doc-row .dhash{font-family:var(--mono);font-size:9px;color:var(--cream-muted);max-width:120px;overflow:hidden;text-overflow:ellipsis}
+
+.modal-bg{position:fixed;inset:0;background:rgba(0,0,0,0.78);display:flex;align-items:center;justify-content:center;z-index:200;padding:14px;animation:fadein 0.18s}
+@keyframes fadein{from{opacity:0}to{opacity:1}}
+.modal{background:var(--void-2);border:1px solid var(--brass);border-radius:5px;max-width:760px;width:100%;max-height:92vh;overflow-y:auto;padding:0}
+.modal-h{display:flex;justify-content:space-between;align-items:center;padding:14px 18px;border-bottom:1px solid var(--line);position:sticky;top:0;background:var(--void-2);z-index:1}
+.modal-h h3{font-family:var(--serif);font-size:16px;color:var(--brass)}
+.modal-b{padding:18px 22px 22px}
+.modal-close{font-family:var(--mono);font-size:14px;color:var(--cream-dim);padding:4px 10px;border:1px solid var(--line);border-radius:3px}
+.modal-close:hover{color:var(--ox);border-color:var(--ox)}
+
+.toast{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);background:var(--void-2);border:1px solid var(--brass);color:var(--cream);padding:9px 16px;border-radius:3px;font-size:12px;opacity:0;transition:opacity 0.22s,bottom 0.22s;font-family:var(--mono);letter-spacing:0.04em;z-index:300;pointer-events:none;box-shadow:0 4px 16px rgba(0,0,0,0.5)}
+.toast.show{opacity:1;bottom:30px}
+
+.chat{display:flex;flex-direction:column;gap:10px;max-height:58vh;overflow-y:auto;padding:6px;margin-bottom:8px}
+.msg{padding:11px 15px;border-radius:6px;max-width:88%;font-size:13px;line-height:1.55;white-space:pre-wrap;word-break:break-word}
+.msg.user{background:var(--ink);align-self:flex-end;border-bottom-right-radius:2px}
+.msg.bot{background:var(--void-2);border:1px solid var(--line);border-left:2px solid var(--brass);align-self:flex-start;border-bottom-left-radius:2px}
+.msg.bot .src{font-family:var(--mono);font-size:10px;color:var(--cream-muted);letter-spacing:0.08em;margin-top:6px;padding-top:6px;border-top:1px dashed var(--line)}
+.chat-input{display:flex;gap:8px;margin-top:10px}
+.chat-input input{flex:1;padding:11px 14px}
+
+.audit-entry{padding:8px 11px;border-left:2px solid var(--brass);background:var(--ink);margin-bottom:5px;font-family:var(--mono);font-size:11px;border-radius:0 3px 3px 0}
+.audit-entry .a-action{color:var(--brass);font-weight:600}
+.audit-entry .a-meta{color:var(--cream-muted);font-size:10px;margin-top:2px}
+.audit-entry .a-reason{color:var(--cream-dim);margin-top:3px;font-family:var(--sans);font-style:italic}
+
+.cd-grid{display:grid;grid-template-columns:280px 1fr;gap:18px;margin-top:8px}
+@media (max-width:840px){.cd-grid{grid-template-columns:1fr}}
+.cd-side{background:var(--void-2);border:1px solid var(--line);border-radius:4px;padding:14px}
+.cd-side .who{font-family:var(--serif);font-size:17px;color:var(--cream);margin-bottom:4px}
+.cd-side .sub{font-family:var(--mono);font-size:11px;color:var(--cream-muted);margin-bottom:10px;letter-spacing:0.04em}
+.cd-side .actions{display:flex;flex-direction:column;gap:6px;margin-top:14px}
+.cd-side .actions .btn{justify-content:center;text-align:center}
+.cd-body{display:flex;flex-direction:column;gap:14px}
+
+.banner{padding:10px 14px;border-radius:3px;font-size:12px;line-height:1.55;border:1px solid;margin-bottom:14px}
+.banner.warn{border-color:var(--amber);background:rgba(255,140,0,0.08);color:var(--cream)}
+.banner.info{border-color:var(--blue);background:rgba(96,165,250,0.06);color:var(--cream)}
+.banner.success{border-color:var(--green);background:rgba(74,222,128,0.06);color:var(--cream)}
+.banner.danger{border-color:var(--ox);background:rgba(139,26,26,0.12);color:var(--cream)}
+
+.empty{text-align:center;padding:60px 20px;color:var(--cream-muted)}
+.empty .big{font-family:var(--serif);font-size:22px;color:var(--brass);margin-bottom:8px}
+.empty .small{font-size:13px;margin-bottom:20px}
+
+.dash-kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin-bottom:18px}
+.dash-kpi{background:var(--void-2);border:1px solid var(--line);border-radius:4px;padding:14px 16px}
+.dash-kpi .n{font-family:var(--serif);font-size:28px;font-weight:700;color:var(--brass);line-height:1.1}
+.dash-kpi .l{font-family:var(--mono);font-size:10px;color:var(--cream-muted);letter-spacing:0.1em;text-transform:uppercase;margin-top:4px}
+.dash-kpi.due .n{color:var(--ox)}
+.dash-kpi.warn .n{color:var(--amber)}
+.dash-kpi.ok .n{color:var(--green)}
+
+.divider{height:1px;background:var(--line);margin:18px 0}
+
+input[type=checkbox]{width:auto;margin-right:8px;vertical-align:middle;accent-color:var(--brass)}
+input[type=radio]{width:auto;margin-right:6px;accent-color:var(--brass)}
+
+.help-pill{display:inline-block;padding:1px 7px;border-radius:8px;background:var(--ink);color:var(--cream-muted);font-family:var(--mono);font-size:10px;margin-left:6px;border:1px solid var(--line);cursor:help}
+
+.foot{text-align:center;padding:30px 12px 12px;font-family:var(--mono);font-size:10px;color:var(--cream-muted);letter-spacing:0.08em}
+.foot a{color:var(--cream-muted);text-decoration:underline}
+
+.cat-cards{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
+@media (max-width:640px){.cat-cards{grid-template-columns:1fr}}
+.cat-card{background:var(--ink);border:2px solid var(--line);border-radius:5px;padding:18px;cursor:pointer;transition:0.15s}
+.cat-card:hover{border-color:var(--brass)}
+.cat-card.active{border-color:var(--brass);background:var(--ink-2)}
+.cat-card .ct{font-family:var(--serif);font-size:16px;color:var(--brass);margin-bottom:6px}
+.cat-card .cd{font-size:12px;color:var(--cream-dim);line-height:1.5}
+
+.po-row{display:flex;align-items:center;gap:10px;padding:8px 11px;background:var(--ink);border:1px solid var(--line);border-radius:3px;margin-bottom:6px;font-size:12px}
+.po-row .po-pct{font-family:var(--mono);color:var(--brass);font-weight:600;min-width:50px}
+.po-row .po-name{flex:1}
+</style>
+</head>
+<body>
+<div class="app">
+<header>
+  <div class="brand">
+    <div class="mark">&#9674;</div>
+    <div>
+      <div class="name" id="brandName">FallInsuranceOnboard</div>
+      <div class="seal" id="brandSeal">SOVEREIGN · IDD · CDD · P839</div>
+    </div>
+  </div>
+  <nav class="tabs" id="nav"></nav>
+  <div class="tools-r">
+    <button class="tool-btn" id="tierBadge" onclick="openModal('settings')">T0</button>
+    <button class="tool-btn" onclick="openModal('audit')">audit</button>
+    <button class="tool-btn primary" onclick="newClient()">+ client</button>
+  </div>
+</header>
+<main id="view"></main>
+</div>
+<div id="modalRoot"></div>
+<div class="toast" id="toast"></div>
+
+<script>
+'use strict';
+
+// ════════════════════════════════════════════════════════════════
+// CONSTANTS
+// ════════════════════════════════════════════════════════════════
+const TOOLNAME='fallinsuranceonboard';
+const VERSION='1.0.0';
+const PRIME=839;
+const SCHEMA_V=1;
+const STORE='fallinsuranceonboard.v1';
+const AUDIT_CAP=50000;
+
+const TABS=[
+  {id:'clients',label:'Clients'},
+  {id:'dashboard',label:'Dashboard'},
+  {id:'demands',label:'D&N Library'},
+  {id:'firm',label:'Firm'},
+  {id:'advisers',label:'Advisers'},
+  {id:'qa',label:'IDD Help'},
+];
+
+// AML re-review cadence (days) by risk grade
+const REVIEW_CADENCE={low:730,medium:365,high:180};
+// AML threshold for insurance broker — JMLSG Part II §16 / MLR 2017 reg.8(2)(b)
+// life insurance £1000+, but commercial GI >£15k annual premium typical EDD trigger
+const AML_PREMIUM_THRESHOLD=15000;
+
+const DOC_TYPES=[
+  {v:'passport',l:'Passport'},
+  {v:'driving-licence',l:'Driving licence'},
+  {v:'utility-bill',l:'Utility bill (last 3 months)'},
+  {v:'bank-statement',l:'Bank statement (last 3 months)'},
+  {v:'incorp-cert',l:'Certificate of incorporation'},
+  {v:'companies-house',l:'Companies House extract'},
+  {v:'psc-register',l:'PSC register extract'},
+  {v:'prior-claims',l:'Prior claims experience letter'},
+  {v:'survey-report',l:'Risk survey / property report'},
+  {v:'accounts',l:'Filed accounts (commercial)'},
+  {v:'sof-evidence',l:'Source of funds evidence'},
+  {v:'other',l:'Other'},
+];
+const DOC_EXPIRY={
+  'passport':365*10,'driving-licence':365*10,
+  'utility-bill':90,'bank-statement':90,
+  'incorp-cert':null,'companies-house':180,'psc-register':180,
+  'prior-claims':365,'survey-report':365*3,'accounts':365*2,
+  'sof-evidence':null,'other':null
+};
+
+const HIGH_RISK_JURIS=['AF','BY','MM','KP','SY','IR','CU','VE','RU','HT','YE','SS','LY'];
+
+const PRODUCT_CLASSES=[
+  {v:'commercial-property',l:'Commercial property',cat:'commercial'},
+  {v:'EL',l:'Employers liability (EL)',cat:'commercial'},
+  {v:'PL',l:'Public liability (PL)',cat:'commercial'},
+  {v:'motor-fleet',l:'Motor fleet',cat:'commercial'},
+  {v:'cyber',l:'Cyber',cat:'commercial'},
+  {v:'PI',l:'Professional indemnity (PI)',cat:'commercial'},
+  {v:'D&O',l:"Directors' & Officers' (D&O)",cat:'commercial'},
+  {v:'landlord',l:'Landlord',cat:'commercial'},
+  {v:'home',l:'Home / contents',cat:'consumer'},
+  {v:'motor',l:'Private motor',cat:'consumer'},
+  {v:'travel',l:'Travel',cat:'consumer'},
+  {v:'health',l:'Health',cat:'consumer'},
+  {v:'pet',l:'Pet',cat:'consumer'},
+  {v:'life',l:'Life / IP',cat:'consumer'},
+];
+
+// SM&CR senior management functions (insurance-specific)
+const SMCR_ROLES=[
+  {v:'SMF1',l:'SMF1 · Chief Executive'},
+  {v:'SMF3',l:'SMF3 · Executive Director'},
+  {v:'SMF16',l:'SMF16 · Compliance Oversight'},
+  {v:'SMF17',l:'SMF17 · MLRO'},
+  {v:'SMF22',l:'SMF22 · Other Overall Responsibility'},
+  {v:'SMF27',l:'SMF27 · Partner'},
+  {v:'CF30',l:'CF30 · Customer (certified)'},
+  {v:'AR',l:'AR · Appointed Representative'},
+  {v:'IDD-CONDUCT',l:'IDD conduct of insurance distribution'},
+  {v:'NONE',l:'No SM&CR role'}
+];
+
+const INDUSTRY_SIC=[
+  {v:'',l:'—'},
+  {v:'41200',l:'41200 · Construction of buildings'},
+  {v:'43999',l:'43999 · Other construction n.e.c.'},
+  {v:'47190',l:'47190 · Retail in non-specialised stores'},
+  {v:'56101',l:'56101 · Licensed restaurants'},
+  {v:'56210',l:'56210 · Event catering'},
+  {v:'62012',l:'62012 · Business & domestic software development'},
+  {v:'68209',l:'68209 · Letting of own/leased real estate'},
+  {v:'69109',l:'69109 · Activities of solicitors / barristers'},
+  {v:'69201',l:'69201 · Accounting + bookkeeping'},
+  {v:'70229',l:'70229 · Management consultancy'},
+  {v:'85600',l:'85600 · Educational support'},
+  {v:'86220',l:'86220 · Specialist medical practice'},
+  {v:'94120',l:'94120 · Professional membership orgs'},
+  {v:'OTHER',l:'Other (specify in notes)'}
+];
+
+// ════════════════════════════════════════════════════════════════
+// DEMANDS & NEEDS LIBRARY · template questions per product class
+// ════════════════════════════════════════════════════════════════
+const DN_LIBRARY={
+  'commercial-property':{
+    title:'Commercial property',
+    questions:[
+      'Do you own or occupy the premises? (freehold / leasehold / licence)',
+      'What is the rebuild value of the buildings (not market value)?',
+      'What is the maximum value of contents / stock at any one time?',
+      'Are there business interruption exposures (loss of rent / loss of gross profit)?',
+      'Are the premises listed, of unusual construction, or have flat roofs over 25%?',
+      'Has the property had subsidence, flood or fire claims in the last 10 years?',
+      'Is the premises occupied 24/7 or left unoccupied at periods (>30d trigger)?',
+      'Are there contractual requirements from landlord / mortgagee?',
+    ]
+  },
+  'EL':{
+    title:'Employers liability',
+    questions:[
+      'How many employees do you have (including labour-only sub-contractors)?',
+      'What is the total wageroll for the next 12 months?',
+      'Do any employees work at height, with hot work, or with heavy machinery?',
+      'Do you have any overseas employees or employees travelling abroad?',
+      'Have there been any EL claims in the last 5 years?',
+      'Is the statutory £5M minimum sufficient — or do contracts demand £10M?',
+    ]
+  },
+  'PL':{
+    title:'Public liability',
+    questions:[
+      'What activities are performed at third-party premises?',
+      'What is the maximum limit demanded by any client contract?',
+      'Do you work on heritage / listed / high-net-worth properties?',
+      'Do you sell, supply or install products (need product liability extension)?',
+      'Have there been any PL/product claims in the last 5 years?',
+    ]
+  },
+  'motor-fleet':{
+    title:'Motor fleet',
+    questions:[
+      'How many vehicles? (split: cars / vans / HGVs / specialist plant)',
+      'Driver profile: age range, licence restrictions, named-driver only?',
+      'Any drivers with convictions in last 5 years (DR/IN/SP/CD/DD codes)?',
+      'Annual mileage estimate per vehicle band?',
+      'Use category: own goods / hire & reward / haulage?',
+      'Last 5 years claims experience — frequency + cost?',
+      'Telematics installed?',
+    ]
+  },
+  'cyber':{
+    title:'Cyber',
+    questions:[
+      'Annual turnover / records held (PII counts, payment card volume)?',
+      'Do you process special category data under UK GDPR?',
+      'MFA on all admin accounts? Backups offline / immutable?',
+      'EDR / patching cadence? Phishing-resistant authentication?',
+      'Prior cyber incidents or notifiable breaches under UK GDPR?',
+      'What sub-limits are required for: ransomware, business interruption, regulatory defence?',
+    ]
+  },
+  'PI':{
+    title:'Professional indemnity',
+    questions:[
+      'Professional services description + qualifications of fee earners?',
+      'Annual fee income (UK / overseas split)?',
+      'Limit of indemnity — any-one-claim or aggregate (and contract requirements)?',
+      'Largest single fee in last 24 months / largest project value?',
+      'Any prior claims, complaints or circumstances notified to insurers?',
+      'Retroactive date required (full or limited)?',
+    ]
+  },
+  'D&O':{
+    title:'Directors & Officers',
+    questions:[
+      'Number of directors + officers to be insured?',
+      'Public / private / charitable entity? Listed (LSE / AIM)?',
+      'Any US exposure (US subsidiary, US revenue, US shareholders)?',
+      'Pending litigation, investigations or regulatory enquiries?',
+      'Side A / Side B / Side C requirements?',
+      'Run-off cover required for any retiring director?',
+    ]
+  },
+  'landlord':{
+    title:'Landlord',
+    questions:[
+      'How many properties + rebuild values?',
+      'Tenant types (AST / HMO / DSS / commercial / student / corporate let)?',
+      'Maximum rental income (loss of rent indemnity period)?',
+      'Periods of vacancy expected? Property management arrangements?',
+      'EICR / gas safety / fire compliance in date?',
+    ]
+  },
+  'home':{
+    title:'Home / contents',
+    questions:[
+      'Buildings rebuild value / contents value / high-value items list (>£2k)?',
+      'Property unoccupied >30 days at any time?',
+      'Construction (standard / non-standard / listed / flat roof %)?',
+      'Past claims (subsidence, flood, escape of water, theft) in 5 years?',
+      'Working from home / running a business from home?',
+      'Specified items / portable cover required (jewellery / cycles / laptops)?',
+    ]
+  },
+  'motor':{
+    title:'Private motor',
+    questions:[
+      'Vehicle make/model/value + modifications?',
+      'Annual mileage + use (SDP / commuting / business)?',
+      'Drivers — age, licence type, convictions, accidents in 5 years?',
+      'Overnight location (garage / drive / on-road)?',
+      'NCD years claimed / earned?',
+      'Telematics / black box acceptable?',
+    ]
+  },
+  'travel':{
+    title:'Travel',
+    questions:[
+      'Single trip or annual multi-trip? Geographic limits (EU / worldwide / WW excl USA)?',
+      'Pre-existing medical conditions for any traveller?',
+      'Hazardous activities planned (skiing / scuba / motorbike >125cc)?',
+      'Trip duration limits + maximum age?',
+    ]
+  },
+  'health':{
+    title:'Health',
+    questions:[
+      'Moratorium underwriting acceptable, or full medical history disclosure?',
+      'Pre-existing conditions you want covered?',
+      'Hospital list (Standard / Comprehensive / Worldwide)?',
+      'Excess preference + outpatient limits?',
+      'Family or individual cover?',
+    ]
+  },
+  'pet':{
+    title:'Pet',
+    questions:[
+      'Species, breed, age + any pre-existing conditions?',
+      'Cover type (accident only / 12-month / lifetime)?',
+      'Vet fee limit preference + excess?',
+      'Third-party liability (dogs)?',
+    ]
+  },
+  'life':{
+    title:'Life / income protection',
+    questions:[
+      'Sum assured + term + reason for cover (mortgage / family / business)?',
+      'Smoker status + significant medical conditions?',
+      'In trust requirement (writing in trust)?',
+      'Critical illness / waiver of premium / IP riders?',
+    ]
+  }
+};
+
+// ════════════════════════════════════════════════════════════════
+// STATE
+// ════════════════════════════════════════════════════════════════
+let state={
+  schemaVersion:SCHEMA_V,
+  active:'clients',
+  firm:null,
+  advisers:[],
+  clients:[],
+  audit:[],
+  chat:[],
+  policies:[], // received from fall-insurance broadcasts
+  settings:{
+    engineName:'FallInsuranceOnboard',
+    anthropicKey:'',openaiKey:'',geminiKey:'',openrouterKey:'',
+    auditChain:true,
+    isDemoSeeded:false,
+    setupDismissed:false,
+  },
+  ui:{
+    filter:{category:'',industry:'',policiesMin:0,due:false,kyc:''},
+    wizard:null,
+    activeClient:null,
+  }
+};
+
+// ════════════════════════════════════════════════════════════════
+// UTIL
+// ════════════════════════════════════════════════════════════════
+const $=(s,p=document)=>p.querySelector(s);
+const $$=(s,p=document)=>Array.from(p.querySelectorAll(s));
+const uid=(p='id')=>p+'_'+(crypto.randomUUID?crypto.randomUUID().replace(/-/g,'').slice(0,16):Math.random().toString(36).slice(2,18));
+const now=()=>Date.now();
+const esc=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const fmtDate=t=>{if(!t)return'—';const d=new Date(t);return d.toLocaleDateString('en-GB',{year:'numeric',month:'short',day:'2-digit'})};
+const fmtDateTime=t=>{if(!t)return'—';const d=new Date(t);return d.toLocaleString('en-GB',{year:'numeric',month:'short',day:'2-digit',hour:'2-digit',minute:'2-digit'})};
+const fmtDateISO=t=>{if(!t)return'';const d=new Date(t);return d.toISOString().slice(0,10)};
+const fmtMoney=n=>n==null||isNaN(n)?'—':'£'+Number(n).toLocaleString('en-GB',{maximumFractionDigits:0});
+const ageYears=dob=>{if(!dob)return null;const d=new Date(dob),n=new Date();let a=n.getFullYear()-d.getFullYear();const m=n.getMonth()-d.getMonth();if(m<0||(m===0&&n.getDate()<d.getDate()))a--;return a};
+const addDays=(t,d)=>t+d*86400000;
+const daysBetween=(a,b)=>Math.round((b-a)/86400000);
+const bytes=n=>{if(n<1024)return n+'B';if(n<1024*1024)return(n/1024).toFixed(1)+'KB';return(n/1048576).toFixed(2)+'MB'};
+
+function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('show');clearTimeout(t._to);t._to=setTimeout(()=>t.classList.remove('show'),2200)}
+
+async function sha256(s){const buf=s instanceof ArrayBuffer?s:new TextEncoder().encode(typeof s==='string'?s:JSON.stringify(s));const h=await crypto.subtle.digest('SHA-256',buf);return Array.from(new Uint8Array(h)).map(b=>b.toString(16).padStart(2,'0')).join('')}
+async function sha256Blob(blob){const buf=await blob.arrayBuffer();return sha256(buf)}
+
+// ════════════════════════════════════════════════════════════════
+// INDEXEDDB · stores: state, audit, documents
+// ════════════════════════════════════════════════════════════════
+let db;
+function openDB(){
+  return new Promise((res,rej)=>{
+    const r=indexedDB.open(STORE,1);
+    r.onupgradeneeded=e=>{
+      const d=e.target.result;
+      if(!d.objectStoreNames.contains('state'))d.createObjectStore('state');
+      if(!d.objectStoreNames.contains('audit'))d.createObjectStore('audit',{keyPath:'i'});
+      if(!d.objectStoreNames.contains('documents'))d.createObjectStore('documents',{keyPath:'id'});
+    };
+    r.onsuccess=e=>{db=e.target.result;res(db)};
+    r.onerror=e=>rej(e);
+  });
+}
+function idbPut(store,val,key){return new Promise((res,rej)=>{const tx=db.transaction(store,'readwrite');const r=key?tx.objectStore(store).put(val,key):tx.objectStore(store).put(val);r.onsuccess=()=>res(r.result);r.onerror=()=>rej(r.error)})}
+function idbGet(store,key){return new Promise((res,rej)=>{const tx=db.transaction(store,'readonly');const r=tx.objectStore(store).get(key);r.onsuccess=()=>res(r.result);r.onerror=()=>rej(r.error)})}
+function idbDel(store,key){return new Promise((res,rej)=>{const tx=db.transaction(store,'readwrite');const r=tx.objectStore(store).delete(key);r.onsuccess=()=>res();r.onerror=()=>rej(r.error)})}
+function idbAll(store){return new Promise((res,rej)=>{const tx=db.transaction(store,'readonly');const r=tx.objectStore(store).getAll();r.onsuccess=()=>res(r.result||[]);r.onerror=()=>rej(r.error)})}
+function idbClear(store){return new Promise((res,rej)=>{const tx=db.transaction(store,'readwrite');const r=tx.objectStore(store).clear();r.onsuccess=()=>res();r.onerror=()=>rej(r.error)})}
+
+async function persistState(){
+  if(!db)await openDB();
+  const snap={
+    schemaVersion:state.schemaVersion,
+    active:state.active,
+    firm:state.firm,
+    advisers:state.advisers,
+    clients:state.clients,
+    policies:state.policies,
+    chat:state.chat,
+    settings:state.settings,
+  };
+  try{localStorage.setItem(STORE+'.state',JSON.stringify(snap))}catch(e){}
+  return idbPut('state',snap,'main');
+}
+async function loadState(){
+  if(!db)await openDB();
+  let s=await idbGet('state','main');
+  if(!s){
+    try{const raw=localStorage.getItem(STORE+'.state');if(raw)s=JSON.parse(raw)}catch(e){}
+  }
+  if(s){
+    state.schemaVersion=s.schemaVersion||SCHEMA_V;
+    state.active=s.active||'clients';
+    state.firm=s.firm||null;
+    state.advisers=Array.isArray(s.advisers)?s.advisers:[];
+    state.clients=Array.isArray(s.clients)?s.clients:[];
+    state.policies=Array.isArray(s.policies)?s.policies:[];
+    state.chat=Array.isArray(s.chat)?s.chat:[];
+    state.settings=Object.assign({},state.settings,s.settings||{});
+  }
+  state.audit=await idbAll('audit');
+  state.audit.sort((a,b)=>a.i-b.i);
+}
+
+// ════════════════════════════════════════════════════════════════
+// AUDIT CHAIN · Mansoor P3 extended (FCA SYSC 6yr)
+// ════════════════════════════════════════════════════════════════
+async function appendAudit(action, info){
+  if(!state.settings.auditChain)return;
+  if(!db)await openDB();
+  const i=state.audit.length?state.audit[state.audit.length-1].i+1:1;
+  const prevHash=state.audit.length?state.audit[state.audit.length-1].docHash:'';
+  const payload=info.payload||{};
+  const entry={
+    i,
+    ts:Date.now(),
+    tool:TOOLNAME,
+    adviserId:info.adviserId||'',
+    clientId:info.clientId||'',
+    action,
+    reasoning:info.reasoning||'',
+    configVersion:`${TOOLNAME}@${VERSION}`,
+    prevHash,
+    docHash:'',
+    payload
+  };
+  entry.docHash=await sha256(JSON.stringify({prevHash,ts:entry.ts,action,clientId:entry.clientId,payload}));
+  state.audit.push(entry);
+  if(state.audit.length>AUDIT_CAP){
+    const drop=state.audit.length-AUDIT_CAP;
+    for(let k=0;k<drop;k++){await idbDel('audit',state.audit[k].i)}
+    state.audit=state.audit.slice(drop);
+  }
+  await idbPut('audit',entry);
+}
+
+// ════════════════════════════════════════════════════════════════
+// BROADCAST MESH · fall-insurance + fall-signal
+// ════════════════════════════════════════════════════════════════
+let bcIns=null, bcSignal=null;
+let _bcDebounce={};
+function bcInit(){
+  try{
+    bcIns=new BroadcastChannel('fall-insurance');
+    bcIns.addEventListener('message',handleInsMsg);
+    bcSignal=new BroadcastChannel('fall-signal');
+    bcSignal.addEventListener('message',handleSignalMsg);
+    bcSignal.postMessage({source:TOOLNAME,type:'hello',prime:PRIME,version:VERSION,ts:now()});
+    bcIns.postMessage({v:1,type:'sync.request',ts:now(),source:TOOLNAME,payload:{}});
+  }catch(e){console.warn('BroadcastChannel unavailable',e)}
+}
+function bcSend(type,payload){
+  if(!bcIns)return;
+  const key=type+'|'+(payload?.id||'');
+  clearTimeout(_bcDebounce[key]);
+  _bcDebounce[key]=setTimeout(()=>{
+    try{bcIns.postMessage({v:1,type,ts:now(),source:TOOLNAME,payload})}catch(e){}
+  },300);
+}
+function bcSendNow(type,payload){
+  if(!bcIns)return;
+  try{bcIns.postMessage({v:1,type,ts:now(),source:TOOLNAME,payload})}catch(e){}
+}
+async function handleInsMsg(e){
+  const m=e.data;if(!m||m.source===TOOLNAME)return;
+  switch(m.type){
+    case 'sync.request':{
+      bcSendNow('sync.snapshot',{clients:state.clients,advisers:state.advisers,firm:state.firm});
+      break;
+    }
+    case 'sync.snapshot':{
+      mergeSnapshot(m.payload||{});render();break;
+    }
+    case 'client.created':
+    case 'client.updated':
+    case 'client.archived':{
+      mergeRecord('clients',m.payload);render();break;
+    }
+    case 'adviser.created':
+    case 'adviser.updated':
+    case 'adviser.archived':{
+      mergeRecord('advisers',m.payload);render();break;
+    }
+    case 'firm.updated':{
+      if(!state.firm||(m.payload?.updatedAt||0)>(state.firm?.updatedAt||0)){state.firm=m.payload;persistState();render()}
+      break;
+    }
+    case 'policy.created':
+    case 'policy.updated':
+    case 'policy.renewed':
+    case 'policy.lapsed':
+    case 'policy.claimed':{
+      mergeRecord('policies',m.payload);render();break;
+    }
+  }
+}
+function handleSignalMsg(e){
+  const m=e.data;if(!m||m.source===TOOLNAME)return;
+  if(m.type==='ping'&&bcSignal)bcSignal.postMessage({source:TOOLNAME,type:'pong',prime:PRIME,version:VERSION,ts:now()});
+}
+function mergeRecord(coll,rec){
+  if(!rec||!rec.id)return;
+  const arr=state[coll]||[];const i=arr.findIndex(x=>x.id===rec.id);
+  if(i<0){arr.push(rec);persistState();return}
+  if((rec.updatedAt||0)>(arr[i].updatedAt||0)){arr[i]=rec;persistState()}
+}
+function mergeSnapshot(p){
+  if(Array.isArray(p.clients))p.clients.forEach(c=>mergeRecord('clients',c));
+  if(Array.isArray(p.advisers))p.advisers.forEach(a=>mergeRecord('advisers',a));
+  if(Array.isArray(p.policies))p.policies.forEach(po=>mergeRecord('policies',po));
+  if(p.firm)mergeRecord_firm(p.firm);
+}
+function mergeRecord_firm(f){
+  if(!f)return;
+  if(!state.firm||(f.updatedAt||0)>(state.firm.updatedAt||0)){state.firm=f;persistState()}
+}
+
+// ════════════════════════════════════════════════════════════════
+// FACTORIES — InsuranceClient extends shared IFA Client schema
+// ════════════════════════════════════════════════════════════════
+function newClientRec(){
+  const t=now();
+  return {
+    id:uid('cl'),
+    firmId:state.firm?.id||'',
+    createdAt:t,updatedAt:t,archivedAt:null,
+    // category — IDD §17(2): consumer | commercial | large-risk
+    customerCategory:'consumer',
+    entityType:'individual', // individual | entity
+    // identity (individual)
+    title:'Mr',firstName:'',middleName:'',lastName:'',preferredName:'',
+    dob:'',gender:'',nationality:'GB',countryOfResidence:'GB',nino:'',utr:'',taxResidency:['GB'],
+    // identity (entity / commercial)
+    entityName:'',tradingName:'',companiesHouseNo:'',vatNumber:'',
+    industry:'',industrySIC:'',incorporationDate:'',
+    // contact
+    email:'',phone:'',
+    address:{line1:'',line2:'',city:'',region:'England',postcode:'',country:'GB',since:''},
+    addressHistory:[],
+    relationships:[],
+    // business profile (commercial)
+    businessProfile:{
+      turnover:0, headcount:0, sector:'',
+      tradingLocations:[],
+      priorInsurerHistory:'',
+      priorClaimsCount5y:0,
+      priorClaimsTotal5y:0,
+      contractRequirements:''
+    },
+    // demands & needs intake (IDD Article 20)
+    demandsAndNeeds:{
+      productClasses:[], // ['EL','PL']
+      eventsOfConcern:'',
+      pastClaims:'',
+      contractualRequirements:'',
+      capacityToBearLoss:'',
+      coverSought:'',
+      adviceBasis:'advisory', // advisory | non-advisory | execution-only
+      answers:{} // {productClass: {questionIdx: answer}}
+    },
+    // KYC / AML (JMLSG Part II §16 for insurance)
+    kyc:{
+      status:'pending',riskGrade:'low',
+      pepFlag:false,pepDetails:'',
+      sanctionsStatus:'not-checked',sanctionsCheckedAt:null,sanctionsCheckedBy:'',
+      sourceOfFunds:'',sourceOfFundsNotes:'',
+      sourceOfWealth:'',sourceOfWealthNotes:'',
+      vulnerableCustomerFlag:false,vulnerabilityCategory:'',vulnerabilityNotes:'',
+      vulnerabilityType:'permanent',
+      documentsHeld:[],
+      lastReviewAt:null,nextReviewDue:null,
+      amlTriggered:false, amlTriggerReason:'',
+      beneficialOwners:[], // {name,dob,nationality,pct,pep,role}
+      pscDirectors:[], // {name,dob,nationality,role,pepChecked,sanctionsChecked,sanctionsResult}
+    },
+    // risk profile (insurance specific)
+    riskProfile:{
+      claimsHistory:'',
+      premiumTrend:'stable',
+      lossRatio:0,
+      surveyHeld:false,
+      surveyDate:null,
+      moralHazardNotes:''
+    },
+    policiesHeld:[], // policy IDs
+    adviserId:state.advisers[0]?.id||'',
+    engagement:{
+      startedAt:t,type:'ongoing',feeBasis:'commission',
+      feeAgreementHash:'',feeAgreementSignedAt:null,
+      initialFee:0,ongoingFee:0,nextReviewDue:null
+    },
+    notes:[],
+    links:{fallinsuranceQuoteIds:[],fallinsurancepaperDocIds:[],fallinsurancepracticeLedgerIds:[]},
+    app:{isDemo:false,onboardCompleted:false}
+  };
+}
+
+function newAdviserRec(){
+  const t=now();
+  return {
+    id:uid('ad'),firmId:state.firm?.id||'',
+    createdAt:t,updatedAt:t,archivedAt:null,
+    name:'',email:'',phone:'',
+    fcaRefNo:'',smcrRole:'IDD-CONDUCT',status:'active',
+    cpdHours:0, cpdYear:new Date().getFullYear(),
+    iddCompliance:{
+      attested:false, attestedAt:null,
+      productOversightTraining:false,
+      registeredAs:'individual' // individual | AR
+    },
+    startedAt:t,leftAt:null
+  };
+}
+function newFirmRec(){
+  const t=now();
+  return {
+    id:uid('fm'),createdAt:t,updatedAt:t,
+    name:'',tradingName:'',fcaRefNo:'',companiesHouseNo:'',vatNumber:'',
+    registeredAddress:{line1:'',line2:'',city:'',postcode:'',country:'GB'},
+    piInsurer:'',piPolicyNo:'',piExpiresAt:null,piIndemnityLimit:1500000,
+    // IDD compliance attestation
+    iddAttested:false, iddAttestedAt:null,
+    network:'', // Cobra / Bspoke / Movo / Bravo / direct
+    professionalBody:'CII',
+    brandColor:'#8b1a1a',brandLogoDataUri:'',
+    setupCompletedAt:null
+  };
+}
+
+// ════════════════════════════════════════════════════════════════
+// AML RISK SCORING + AML TRIGGER LOGIC (insurance broker)
+// ════════════════════════════════════════════════════════════════
+function suggestRiskGrade(c){
+  const k=c.kyc||{};let score=0;const reasons=[];
+  if(k.pepFlag){score+=3;reasons.push('PEP flagged (+3)')}
+  if(k.sanctionsStatus==='match'){score+=4;reasons.push('Sanctions match (+4)')}
+  if(k.sanctionsStatus==='review'){score+=2;reasons.push('Sanctions review (+2)')}
+  if(k.sanctionsStatus==='not-checked'){score+=1;reasons.push('Sanctions not checked (+1)')}
+  if(k.vulnerableCustomerFlag){score+=1;reasons.push('Vulnerable customer (+1)')}
+  if(HIGH_RISK_JURIS.includes(c.nationality)){score+=3;reasons.push('Nationality high-risk (+3)')}
+  if(HIGH_RISK_JURIS.includes(c.countryOfResidence)){score+=3;reasons.push('Residence high-risk (+3)')}
+  if(c.customerCategory==='large-risk'){score+=1;reasons.push('Large-risk customer (+1)')}
+  if(c.entityType==='entity'&&!c.companiesHouseNo){score+=1;reasons.push('Entity without Companies House no (+1)')}
+  // commercial directors PEP
+  if((k.pscDirectors||[]).some(d=>d.pepChecked&&d.sanctionsResult==='match')){score+=4;reasons.push('Director sanctions match (+4)')}
+  if((k.pscDirectors||[]).some(d=>d.pep)){score+=2;reasons.push('Director PEP (+2)')}
+  if(['gift','business-sale','other'].includes(k.sourceOfFunds)){score+=1;reasons.push('Higher-scrutiny source of funds (+1)')}
+  // turnover-based risk for commercial
+  if(c.entityType==='entity'&&(c.businessProfile?.turnover||0)>10000000){score+=1;reasons.push('Turnover >£10M (+1)')}
+  // industry risk
+  const highIndustry=['41200','43999','56101','56210'];
+  if(highIndustry.includes(c.industrySIC)){score+=1;reasons.push('Higher-risk industry sector (+1)')}
+  const grade=score>=5?'high':(score>=2?'medium':'low');
+  return {grade,score,reasons};
+}
+
+// AML trigger — JMLSG Part II §16 / MLR 2017 reg.8
+function checkAmlTrigger(c){
+  if(c.entityType==='entity'){
+    // commercial — always do CDD on entities (corp veil + BO discovery)
+    return {triggered:true, reason:'Commercial entity — CDD always required to identify beneficial owners (MLR 2017 reg.5(1)(b), reg.28(4))'};
+  }
+  // individuals — life products with annual premium > £1k or single premium > £2.5k
+  const lifeProducts=(c.demandsAndNeeds?.productClasses||[]).filter(p=>['life'].includes(p));
+  if(lifeProducts.length>0){
+    return {triggered:true, reason:'Life / pure-protection product (MLR 2017 reg.8(2)(b); JMLSG Part II §16 — premium thresholds apply)'};
+  }
+  // high premium GI commercial
+  const tot=(state.policies||[]).filter(p=>p.clientId===c.id&&p.status==='in-force').reduce((a,p)=>a+(p.premium?.gross||0),0);
+  if(tot>=AML_PREMIUM_THRESHOLD){
+    return {triggered:true, reason:`Aggregate premium ≥£${AML_PREMIUM_THRESHOLD.toLocaleString('en-GB')} — JMLSG higher-scrutiny trigger`};
+  }
+  if(c.kyc?.pepFlag) return {triggered:true, reason:'PEP — EDD required (MLR 2017 reg.35)'};
+  if(HIGH_RISK_JURIS.includes(c.nationality)||HIGH_RISK_JURIS.includes(c.countryOfResidence))
+    return {triggered:true, reason:'High-risk jurisdiction — EDD (MLR 2017 reg.33)'};
+  return {triggered:false, reason:'Pure GI consumer product — full AML CDD not statutorily triggered; ICOBS conduct still applies'};
+}
+
+function computeReviewDates(c){
+  const grade=c.kyc?.riskGrade||'low';
+  const days=REVIEW_CADENCE[grade]||730;
+  const last=c.kyc?.lastReviewAt||c.createdAt||now();
+  return {lastReviewAt:last,nextReviewDue:addDays(last,days)};
+}
+
+function clientDisplayName(c){
+  if(!c)return'(unknown)';
+  if(c.entityType==='entity')return c.entityName||'(unnamed entity)';
+  return `${c.firstName||''} ${c.lastName||''}`.trim()||'(unnamed)';
+}
+
+// ════════════════════════════════════════════════════════════════
+// CRUD (audited + broadcast)
+// ════════════════════════════════════════════════════════════════
+async function saveClient(c,action,reasoning){
+  c.updatedAt=now();
+  const i=state.clients.findIndex(x=>x.id===c.id);
+  const isNew=i<0;
+  if(isNew){state.clients.push(c)}else{state.clients[i]=c}
+  await persistState();
+  await appendAudit(action||(isNew?'client.created':'client.updated'),{
+    clientId:c.id,adviserId:c.adviserId,
+    reasoning:reasoning||(isNew?'Onboarding committed':'Client record updated'),
+    payload:{id:c.id,name:clientDisplayName(c),category:c.customerCategory,kycStatus:c.kyc?.status,risk:c.kyc?.riskGrade}
+  });
+  bcSend(isNew?'client.created':'client.updated',c);
+  return c;
+}
+async function archiveClient(c,reasoning){
+  c.archivedAt=now();c.updatedAt=now();
+  await persistState();
+  await appendAudit('client.archived',{clientId:c.id,adviserId:c.adviserId,reasoning:reasoning||'Soft-archived (FCA 6yr retention)',payload:{id:c.id}});
+  bcSend('client.archived',c);
+}
+async function saveAdviser(a,reasoning){
+  a.updatedAt=now();
+  const i=state.advisers.findIndex(x=>x.id===a.id);
+  const isNew=i<0;
+  if(isNew)state.advisers.push(a);else state.advisers[i]=a;
+  await persistState();
+  await appendAudit(isNew?'adviser.created':'adviser.updated',{adviserId:a.id,reasoning:reasoning||'Adviser saved',payload:{id:a.id,name:a.name,role:a.smcrRole}});
+  bcSend(isNew?'adviser.created':'adviser.updated',a);
+}
+async function saveFirm(f,reasoning){
+  f.updatedAt=now();state.firm=f;
+  await persistState();
+  await appendAudit('firm.updated',{reasoning:reasoning||'Firm record saved',payload:{id:f.id,name:f.name,fca:f.fcaRefNo,iddAttested:f.iddAttested}});
+  bcSend('firm.updated',f);
+}
+
+async function storeDocument(file,clientId,type,note){
+  const id=uid('dc');
+  const hash=await sha256Blob(file);
+  const rec={id,clientId,filename:file.name,type,mime:file.type||'',size:file.size,sha256:hash,capturedAt:now(),note:note||'',blob:file};
+  await idbPut('documents',rec);
+  const expDays=DOC_EXPIRY[type];
+  return {id,type,filename:file.name,blobRef:id,sha256:hash,size:file.size,mime:rec.mime,capturedAt:rec.capturedAt,expiresAt:expDays?addDays(rec.capturedAt,expDays):null,verifiedBy:'',note:note||''};
+}
+async function fetchDocument(id){return idbGet('documents',id)}
+async function downloadDocument(id){
+  const r=await fetchDocument(id);if(!r){toast('Document not found');return}
+  const u=URL.createObjectURL(r.blob);const a=document.createElement('a');a.href=u;a.download=r.filename;a.click();setTimeout(()=>URL.revokeObjectURL(u),1500);
+}
+async function deleteDocument(id){await idbDel('documents',id)}
+
+// ════════════════════════════════════════════════════════════════
+// RENDER · main dispatcher
+// ════════════════════════════════════════════════════════════════
+function render(){
+  $('#brandName').textContent=state.settings.engineName||'FallInsuranceOnboard';
+  // tabs
+  const tcounts={clients:state.clients.filter(c=>!c.archivedAt).length,advisers:state.advisers.filter(a=>a.status==='active').length};
+  $('#nav').innerHTML=TABS.map(t=>{
+    const ct=tcounts[t.id];
+    return `<button class="${state.active===t.id?'active':''}" onclick="setTab('${t.id}')">${esc(t.label)}${ct!=null?`<span class="tcount">${ct}</span>`:''}</button>`;
+  }).join('');
+  const view=$('#view');
+  switch(state.active){
+    case 'clients': view.innerHTML=renderClients(); break;
+    case 'dashboard': view.innerHTML=renderDashboard(); break;
+    case 'demands': view.innerHTML=renderDemands(); break;
+    case 'firm': view.innerHTML=renderFirm(); break;
+    case 'advisers': view.innerHTML=renderAdvisers(); break;
+    case 'qa': view.innerHTML=renderQA(); break;
+    default: view.innerHTML='';
+  }
+  // first-launch banner if firm not set up
+  if(!state.firm||!state.firm.setupCompletedAt){
+    if(!state.settings.setupDismissed){
+      view.insertAdjacentHTML('afterbegin',`<div class="banner warn"><strong>First-launch setup.</strong> Configure your firm (FCA ref, PI insurer, IDD attestation) before onboarding live clients. <button class="btn sm" onclick="setTab('firm')">→ go to Firm</button> <button class="btn sm ghost" onclick="dismissSetup()">dismiss</button></div>`);
+    }
+  }
+}
+function setTab(id){state.active=id;persistState();render()}
+function dismissSetup(){state.settings.setupDismissed=true;persistState();render()}
+
+// ───────── disclaimer (shared) ─────────
+const DISCLAIMER=`<div class="disclaimer"><strong>FallInsuranceOnboard.</strong> Sovereign IDD-shaped onboarding for UK FCA-regulated insurance brokers. It assists with client category, demands & needs (IDD Art 20), AML CDD where statutorily triggered (commercial entities + life products + EDD scenarios per MLR 2017), PEP & sanctions screen, vulnerable customer assessment (FG21/1), document capture with SHA-256. <strong>Not</strong> an insurer-binding system; conduct rules + ICOBS application remain the broker's responsibility. Client data never leaves the device unless exported.</div>`;
+
+// ════════════════════════════════════════════════════════════════
+// CLIENTS LIST VIEW
+// ════════════════════════════════════════════════════════════════
+function renderClients(){
+  const f=state.ui.filter;
+  let rows=state.clients.filter(c=>!c.archivedAt);
+  if(f.category)rows=rows.filter(c=>c.customerCategory===f.category);
+  if(f.industry)rows=rows.filter(c=>c.industry?.toLowerCase().includes(f.industry.toLowerCase())||c.industrySIC===f.industry);
+  if(f.policiesMin)rows=rows.filter(c=>(c.policiesHeld||[]).length>=f.policiesMin);
+  if(f.kyc)rows=rows.filter(c=>c.kyc?.status===f.kyc);
+  if(f.due)rows=rows.filter(c=>c.kyc?.nextReviewDue&&c.kyc.nextReviewDue<now());
+  rows.sort((a,b)=>(b.updatedAt||0)-(a.updatedAt||0));
+  return `${DISCLAIMER}
+  <div class="section-h">
+    <div><h2>Clients</h2><div class="sub">${rows.length} of ${state.clients.filter(c=>!c.archivedAt).length} · IDB-only · sha256-signed audit chain</div></div>
+    <div class="actions"><button class="btn primary" onclick="newClient()">+ new client</button></div>
+  </div>
+  <div class="chip-row">
+    <span class="chip ${!f.category?'active':''}" onclick="setFilter('category','')">all categories</span>
+    <span class="chip ${f.category==='consumer'?'active':''}" onclick="setFilter('category','consumer')">consumer</span>
+    <span class="chip ${f.category==='commercial'?'active':''}" onclick="setFilter('category','commercial')">commercial</span>
+    <span class="chip ${f.category==='large-risk'?'active':''}" onclick="setFilter('category','large-risk')">large-risk</span>
+    <span class="chip ${!f.kyc?'active':''}" onclick="setFilter('kyc','')">any KYC</span>
+    <span class="chip ${f.kyc==='pending'?'active':''}" onclick="setFilter('kyc','pending')">kyc · pending</span>
+    <span class="chip ${f.kyc==='verified'?'active':''}" onclick="setFilter('kyc','verified')">kyc · verified</span>
+    <span class="chip ${f.kyc==='review'?'active':''}" onclick="setFilter('kyc','review')">kyc · review</span>
+    <span class="chip ${f.due?'active due':''}" onclick="setFilter('due',!f.due)">overdue review</span>
+  </div>
+  ${rows.length===0?`<div class="empty"><div class="big">No clients yet</div><div class="small">Click <strong>+ new client</strong> to start the 10-step IDD-shaped onboarding wizard.</div><button class="btn primary" onclick="newClient()">+ new client</button></div>`:`
+  <div class="card" style="padding:0;overflow:auto">
+    <table>
+      <thead><tr><th>Client</th><th>Category</th><th>Industry / Type</th><th>Risk</th><th>KYC</th><th>Policies</th><th>Adviser</th><th>Last review</th><th></th></tr></thead>
+      <tbody>${rows.map(c=>{
+        const adv=state.advisers.find(a=>a.id===c.adviserId);
+        const dueBad=c.kyc?.nextReviewDue&&c.kyc.nextReviewDue<now();
+        return `<tr class="row-link" onclick="openClient('${c.id}')">
+          <td><strong>${esc(clientDisplayName(c))}</strong>${c.app?.isDemo?' <span class="tag muted">demo</span>':''}</td>
+          <td><span class="tag ${c.customerCategory==='consumer'?'blue':c.customerCategory==='large-risk'?'violet':''}">${esc(c.customerCategory)}</span></td>
+          <td>${c.entityType==='entity'?esc(c.industry||c.industrySIC||'commercial'):'individual'}</td>
+          <td><span class="tag ${c.kyc?.riskGrade==='high'?'red':c.kyc?.riskGrade==='medium'?'amber':'green'}">${esc(c.kyc?.riskGrade||'low')}</span></td>
+          <td><span class="tag ${c.kyc?.status==='verified'?'green':c.kyc?.status==='failed'?'red':c.kyc?.status==='review'?'amber':''}">${esc(c.kyc?.status||'pending')}</span></td>
+          <td class="r">${(c.policiesHeld||[]).length}</td>
+          <td>${adv?esc(adv.name||'(unnamed)'):'<span class="tag muted">none</span>'}</td>
+          <td class="${dueBad?'r':'r'}" style="${dueBad?'color:var(--ox)':''}">${fmtDate(c.kyc?.lastReviewAt)}</td>
+          <td><button class="btn sm ghost" onclick="event.stopPropagation();openClient('${c.id}')">open</button></td>
+        </tr>`;
+      }).join('')}</tbody>
+    </table>
+  </div>`}`;
+}
+function setFilter(k,v){state.ui.filter[k]=v;render()}
+
+// ════════════════════════════════════════════════════════════════
+// DASHBOARD
+// ════════════════════════════════════════════════════════════════
+function renderDashboard(){
+  const cs=state.clients.filter(c=>!c.archivedAt);
+  const overdue=cs.filter(c=>c.kyc?.nextReviewDue&&c.kyc.nextReviewDue<now()).length;
+  const dueSoon=cs.filter(c=>c.kyc?.nextReviewDue&&c.kyc.nextReviewDue>now()&&c.kyc.nextReviewDue<now()+30*86400000).length;
+  const pep=cs.filter(c=>c.kyc?.pepFlag).length;
+  const sanctionMatch=cs.filter(c=>c.kyc?.sanctionsStatus==='match').length;
+  const sanctionUncheck=cs.filter(c=>!c.kyc?.sanctionsStatus||c.kyc?.sanctionsStatus==='not-checked').length;
+  const vuln=cs.filter(c=>c.kyc?.vulnerableCustomerFlag).length;
+  const highRisk=cs.filter(c=>c.kyc?.riskGrade==='high').length;
+  const incomplete=cs.filter(c=>c.kyc?.status==='pending').length;
+  return `${DISCLAIMER}
+  <div class="section-h"><div><h2>Dashboard</h2><div class="sub">FCA SYSC audit chain · 6yr retention · audit entries: ${state.audit.length.toLocaleString('en-GB')}</div></div></div>
+  <div class="dash-kpis">
+    <div class="dash-kpi"><div class="n">${cs.length}</div><div class="l">clients</div></div>
+    <div class="dash-kpi ${overdue>0?'due':''}"><div class="n">${overdue}</div><div class="l">AML review overdue</div></div>
+    <div class="dash-kpi ${dueSoon>0?'warn':''}"><div class="n">${dueSoon}</div><div class="l">AML due 30d</div></div>
+    <div class="dash-kpi ${pep>0?'warn':''}"><div class="n">${pep}</div><div class="l">PEP flagged</div></div>
+    <div class="dash-kpi ${sanctionMatch>0?'due':''}"><div class="n">${sanctionMatch}</div><div class="l">sanctions match</div></div>
+    <div class="dash-kpi ${sanctionUncheck>0?'warn':''}"><div class="n">${sanctionUncheck}</div><div class="l">sanctions unchecked</div></div>
+    <div class="dash-kpi"><div class="n">${vuln}</div><div class="l">vulnerable</div></div>
+    <div class="dash-kpi ${highRisk>0?'due':''}"><div class="n">${highRisk}</div><div class="l">high-risk grade</div></div>
+    <div class="dash-kpi ${incomplete>0?'warn':''}"><div class="n">${incomplete}</div><div class="l">CDD pending</div></div>
+  </div>
+  <div class="grid-2">
+    <div class="card"><h3>Reviews due in 30 days</h3>
+      ${(()=>{const d=cs.filter(c=>c.kyc?.nextReviewDue&&c.kyc.nextReviewDue<now()+30*86400000).sort((a,b)=>(a.kyc?.nextReviewDue||0)-(b.kyc?.nextReviewDue||0));if(!d.length)return '<div class="kpi"><span class="l">No reviews due in 30 days.</span></div>';return d.slice(0,10).map(c=>`<div class="kpi"><span class="l" style="cursor:pointer" onclick="openClient('${c.id}')">${esc(clientDisplayName(c))}</span><span class="v ${c.kyc.nextReviewDue<now()?'red':'amber'}">${fmtDate(c.kyc.nextReviewDue)}</span></div>`).join('')})()}
+    </div>
+    <div class="card"><h3>Sanctions to action</h3>
+      ${(()=>{const d=cs.filter(c=>!c.kyc?.sanctionsStatus||c.kyc?.sanctionsStatus==='not-checked'||c.kyc?.sanctionsStatus==='match'||c.kyc?.sanctionsStatus==='review');if(!d.length)return '<div class="kpi"><span class="l">All sanctions checks clear.</span></div>';return d.slice(0,10).map(c=>`<div class="kpi"><span class="l" style="cursor:pointer" onclick="openClient('${c.id}')">${esc(clientDisplayName(c))}</span><span class="v ${c.kyc?.sanctionsStatus==='match'?'red':'amber'}">${esc(c.kyc?.sanctionsStatus||'not-checked')}</span></div>`).join('')})()}
+    </div>
+  </div>`;
+}
+
+// ════════════════════════════════════════════════════════════════
+// DEMANDS & NEEDS LIBRARY (read-only template browser)
+// ════════════════════════════════════════════════════════════════
+function renderDemands(){
+  return `${DISCLAIMER}
+  <div class="section-h"><div><h2>Demands & Needs library</h2><div class="sub">IDD Article 20 · template questions per product class · used in the wizard step 5</div></div></div>
+  <div class="grid">${Object.entries(DN_LIBRARY).map(([k,v])=>`<div class="card"><h3>${esc(v.title)} <span class="meta">${esc(k)}</span></h3>${v.questions.map(q=>`<div class="kpi"><span class="l" style="flex:1">${esc(q)}</span></div>`).join('')}</div>`).join('')}</div>`;
+}
+
+// ════════════════════════════════════════════════════════════════
+// FIRM SETUP
+// ════════════════════════════════════════════════════════════════
+function renderFirm(){
+  const f=state.firm||newFirmRec();
+  return `${DISCLAIMER}
+  <div class="section-h"><div><h2>Firm</h2><div class="sub">FCA-regulated insurance broker · IDD attestation · PI £1.5M minimum</div></div></div>
+  <form class="card" onsubmit="event.preventDefault();onFirmSave(this)" style="max-width:780px">
+    <div class="row"><div class="field"><label>Firm name <span class="req">*</span></label><input name="name" value="${esc(f.name)}" required></div><div class="field"><label>Trading name</label><input name="tradingName" value="${esc(f.tradingName)}"></div></div>
+    <div class="row"><div class="field"><label>FCA ref <span class="req">*</span></label><input name="fcaRefNo" value="${esc(f.fcaRefNo)}" required placeholder="123456"></div><div class="field"><label>Companies House no</label><input name="companiesHouseNo" value="${esc(f.companiesHouseNo)}"></div></div>
+    <div class="row"><div class="field"><label>VAT no</label><input name="vatNumber" value="${esc(f.vatNumber)}"></div><div class="field"><label>Network (AR) or 'direct' (DA)</label><input name="network" value="${esc(f.network)}" placeholder="Cobra / Bspoke / Movo / Bravo / direct"></div></div>
+    <h3 style="font-family:var(--serif);font-size:14px;margin:14px 0 8px;color:var(--brass)">Registered address</h3>
+    <div class="row"><div class="field"><label>Line 1</label><input name="rLine1" value="${esc(f.registeredAddress?.line1)}"></div><div class="field"><label>Line 2</label><input name="rLine2" value="${esc(f.registeredAddress?.line2)}"></div></div>
+    <div class="row3"><div class="field"><label>City</label><input name="rCity" value="${esc(f.registeredAddress?.city)}"></div><div class="field"><label>Postcode</label><input name="rPostcode" value="${esc(f.registeredAddress?.postcode)}"></div><div class="field"><label>Country</label><input name="rCountry" value="${esc(f.registeredAddress?.country||'GB')}"></div></div>
+    <h3 style="font-family:var(--serif);font-size:14px;margin:14px 0 8px;color:var(--brass)">Professional indemnity</h3>
+    <div class="row3"><div class="field"><label>PI insurer</label><input name="piInsurer" value="${esc(f.piInsurer)}"></div><div class="field"><label>Policy no</label><input name="piPolicyNo" value="${esc(f.piPolicyNo)}"></div><div class="field"><label>Expiry</label><input type="date" name="piExpiresAt" value="${f.piExpiresAt?fmtDateISO(f.piExpiresAt):''}"></div></div>
+    <div class="field"><label>Indemnity limit (£) — IDD minimum £1.3M each claim / £1.95M aggregate (uplifted to £1.5M each in spec)</label><input type="number" name="piIndemnityLimit" value="${f.piIndemnityLimit||1500000}" min="1300000"></div>
+    <h3 style="font-family:var(--serif);font-size:14px;margin:14px 0 8px;color:var(--brass)">IDD attestation</h3>
+    <div class="field"><label><input type="checkbox" name="iddAttested" ${f.iddAttested?'checked':''}> The firm attests to compliance with the Insurance Distribution Directive (IDD) and FCA ICOBS</label></div>
+    <div class="row"><div class="field"><label>Professional body</label><select name="professionalBody"><option ${f.professionalBody==='CII'?'selected':''}>CII</option><option ${f.professionalBody==='BIBA'?'selected':''}>BIBA</option><option ${f.professionalBody==='LIIBA'?'selected':''}>LIIBA</option><option ${f.professionalBody==='other'?'selected':''}>other</option></select></div><div class="field"><label>Setup completed at</label><input value="${fmtDateTime(f.setupCompletedAt)}" disabled></div></div>
+    <div style="display:flex;gap:8px;margin-top:18px"><button class="btn primary" type="submit">save firm</button><button type="button" class="btn ghost" onclick="render()">cancel</button></div>
+  </form>`;
+}
+async function onFirmSave(formEl){
+  const fd=new FormData(formEl);
+  const f=state.firm||newFirmRec();
+  f.name=fd.get('name');f.tradingName=fd.get('tradingName')||'';
+  f.fcaRefNo=fd.get('fcaRefNo');f.companiesHouseNo=fd.get('companiesHouseNo')||'';
+  f.vatNumber=fd.get('vatNumber')||'';f.network=fd.get('network')||'';
+  f.registeredAddress={line1:fd.get('rLine1')||'',line2:fd.get('rLine2')||'',city:fd.get('rCity')||'',postcode:fd.get('rPostcode')||'',country:fd.get('rCountry')||'GB'};
+  f.piInsurer=fd.get('piInsurer')||'';f.piPolicyNo=fd.get('piPolicyNo')||'';
+  f.piExpiresAt=fd.get('piExpiresAt')?new Date(fd.get('piExpiresAt')).getTime():null;
+  f.piIndemnityLimit=+fd.get('piIndemnityLimit')||1500000;
+  f.iddAttested=!!fd.get('iddAttested');
+  if(f.iddAttested&&!f.iddAttestedAt)f.iddAttestedAt=now();
+  f.professionalBody=fd.get('professionalBody');
+  if(!f.setupCompletedAt&&f.fcaRefNo&&f.iddAttested)f.setupCompletedAt=now();
+  await saveFirm(f,'Firm record edited via Firm tab');
+  toast('Firm saved');render();
+}
+
+// ════════════════════════════════════════════════════════════════
+// ADVISERS
+// ════════════════════════════════════════════════════════════════
+function renderAdvisers(){
+  return `${DISCLAIMER}
+  <div class="section-h"><div><h2>Advisers</h2><div class="sub">${state.advisers.filter(a=>a.status==='active').length} active · SM&CR + IDD CPD tracking</div></div><div class="actions"><button class="btn primary" onclick="newAdviser()">+ adviser</button></div></div>
+  ${state.advisers.length===0?'<div class="empty"><div class="big">No advisers yet</div><div class="small">Add at least one adviser before onboarding clients (each client links to a responsible adviser).</div><button class="btn primary" onclick="newAdviser()">+ adviser</button></div>':`
+  <div class="card" style="padding:0;overflow:auto"><table>
+    <thead><tr><th>Name</th><th>FCA ref</th><th>SM&CR role</th><th>CPD ${new Date().getFullYear()}</th><th>Status</th><th></th></tr></thead>
+    <tbody>${state.advisers.map(a=>{
+      const cpdOK=(a.cpdHours||0)>=15;
+      return `<tr><td><strong>${esc(a.name||'(unnamed)')}</strong></td><td class="r">${esc(a.fcaRefNo||'—')}</td><td>${esc(a.smcrRole)}</td><td class="r" style="color:${cpdOK?'var(--green)':'var(--amber)'}">${a.cpdHours||0}/15h</td><td><span class="tag ${a.status==='active'?'green':'muted'}">${a.status}</span></td><td><button class="btn sm" onclick="editAdviser('${a.id}')">edit</button></td></tr>`;
+    }).join('')}</tbody></table></div>`}`;
+}
+function newAdviser(){editAdviserRec(newAdviserRec())}
+function editAdviser(id){const a=state.advisers.find(x=>x.id===id);if(a)editAdviserRec(JSON.parse(JSON.stringify(a)))}
+function editAdviserRec(a){
+  openModalHTML('adviser',`<h3>${state.advisers.find(x=>x.id===a.id)?'Edit adviser':'New adviser'}</h3>
+    <form onsubmit="event.preventDefault();onAdviserSave(this,'${a.id}')">
+      <div class="row"><div class="field"><label>Name <span class="req">*</span></label><input name="name" value="${esc(a.name)}" required></div><div class="field"><label>Email</label><input type="email" name="email" value="${esc(a.email)}"></div></div>
+      <div class="row"><div class="field"><label>Phone</label><input name="phone" value="${esc(a.phone)}"></div><div class="field"><label>FCA ref</label><input name="fcaRefNo" value="${esc(a.fcaRefNo)}"></div></div>
+      <div class="row"><div class="field"><label>SM&CR role</label><select name="smcrRole">${SMCR_ROLES.map(r=>`<option value="${r.v}" ${a.smcrRole===r.v?'selected':''}>${esc(r.l)}</option>`).join('')}</select></div><div class="field"><label>Status</label><select name="status"><option ${a.status==='active'?'selected':''}>active</option><option ${a.status==='suspended'?'selected':''}>suspended</option><option ${a.status==='left'?'selected':''}>left</option></select></div></div>
+      <div class="row"><div class="field"><label>CPD hours this year (IDD min 15h/yr)</label><input type="number" name="cpdHours" value="${a.cpdHours||0}" min="0" step="0.5"></div><div class="field"><label>Registered as</label><select name="iddRegisteredAs"><option value="individual" ${a.iddCompliance?.registeredAs==='individual'?'selected':''}>individual</option><option value="AR" ${a.iddCompliance?.registeredAs==='AR'?'selected':''}>AR</option></select></div></div>
+      <div class="field"><label><input type="checkbox" name="iddAttested" ${a.iddCompliance?.attested?'checked':''}> Adviser attests IDD compliance + product oversight training</label></div>
+      <div style="display:flex;gap:8px;margin-top:14px"><button class="btn primary" type="submit">save</button><button type="button" class="btn ghost" onclick="closeModal()">cancel</button></div>
+    </form>`);
+}
+async function onAdviserSave(formEl,id){
+  const fd=new FormData(formEl);
+  const existing=state.advisers.find(a=>a.id===id);
+  const a=existing?JSON.parse(JSON.stringify(existing)):newAdviserRec();
+  a.id=id||a.id;
+  a.name=fd.get('name');a.email=fd.get('email')||'';a.phone=fd.get('phone')||'';
+  a.fcaRefNo=fd.get('fcaRefNo')||'';a.smcrRole=fd.get('smcrRole');a.status=fd.get('status');
+  a.cpdHours=+fd.get('cpdHours')||0;a.cpdYear=new Date().getFullYear();
+  a.iddCompliance=a.iddCompliance||{};
+  a.iddCompliance.registeredAs=fd.get('iddRegisteredAs');
+  a.iddCompliance.attested=!!fd.get('iddAttested');
+  if(a.iddCompliance.attested&&!a.iddCompliance.attestedAt)a.iddCompliance.attestedAt=now();
+  await saveAdviser(a,'Adviser edited via Advisers tab');
+  toast('Adviser saved');closeModal();render();
+}
+
+// ════════════════════════════════════════════════════════════════
+// CLIENT DETAIL (modal)
+// ════════════════════════════════════════════════════════════════
+function openClient(id){
+  const c=state.clients.find(x=>x.id===id);if(!c){toast('Client not found');return}
+  state.ui.activeClient=id;
+  const adv=state.advisers.find(a=>a.id===c.adviserId);
+  const trig=checkAmlTrigger(c);
+  const riskInfo=suggestRiskGrade(c);
+  openModalHTML('client',`<h3>${esc(clientDisplayName(c))} <span class="meta" style="font-family:var(--mono);font-size:10px;color:var(--brass);margin-left:8px">${esc(c.customerCategory)} · ${esc(c.kyc?.riskGrade||'low')}-risk</span></h3>
+    <div class="cd-grid">
+      <div class="cd-side">
+        <div class="who">${esc(clientDisplayName(c))}</div>
+        <div class="sub">${esc(c.customerCategory)} · ${c.entityType==='entity'?'entity':'individual'}</div>
+        <div class="kpi"><span class="l">KYC status</span><span class="v ${c.kyc?.status==='verified'?'green':c.kyc?.status==='failed'?'red':''}">${esc(c.kyc?.status||'pending')}</span></div>
+        <div class="kpi"><span class="l">Risk grade</span><span class="v ${c.kyc?.riskGrade==='high'?'red':c.kyc?.riskGrade==='medium'?'amber':'green'}">${esc(c.kyc?.riskGrade||'low')}</span></div>
+        <div class="kpi"><span class="l">PEP</span><span class="v ${c.kyc?.pepFlag?'red':''}">${c.kyc?.pepFlag?'YES':'no'}</span></div>
+        <div class="kpi"><span class="l">Sanctions</span><span class="v ${c.kyc?.sanctionsStatus==='match'?'red':c.kyc?.sanctionsStatus==='clear'?'green':'amber'}">${esc(c.kyc?.sanctionsStatus||'not-checked')}</span></div>
+        <div class="kpi"><span class="l">Vulnerable</span><span class="v ${c.kyc?.vulnerableCustomerFlag?'amber':''}">${c.kyc?.vulnerableCustomerFlag?'YES':'no'}</span></div>
+        <div class="kpi"><span class="l">Next review</span><span class="v ${c.kyc?.nextReviewDue&&c.kyc.nextReviewDue<now()?'red':''}">${fmtDate(c.kyc?.nextReviewDue)}</span></div>
+        <div class="kpi"><span class="l">Adviser</span><span class="v">${esc(adv?.name||'—')}</span></div>
+        <div class="kpi"><span class="l">Policies</span><span class="v">${(c.policiesHeld||[]).length}</span></div>
+        <div class="actions">
+          <button class="btn primary" onclick="reSanctionsCheck('${c.id}')">↻ re-check sanctions</button>
+          <button class="btn" onclick="exportCDD('${c.id}')">↓ CDD certificate (.md)</button>
+          <button class="btn" onclick="continueWizard('${c.id}')">complete onboarding</button>
+          <button class="btn danger" onclick="confirmArchive('${c.id}')">archive client</button>
+        </div>
+      </div>
+      <div class="cd-body">
+        <div class="card"><h3>AML trigger</h3>
+          <div class="banner ${trig.triggered?'warn':'info'}">${trig.triggered?'<strong>CDD required.</strong> ':'<strong>CDD optional.</strong> '}${esc(trig.reason)}</div>
+        </div>
+        <div class="card"><h3>Risk score · ${riskInfo.score}</h3>
+          ${riskInfo.reasons.length?'<ul style="margin:0;padding-left:18px;font-size:12px;color:var(--cream-dim);line-height:1.7">'+riskInfo.reasons.map(r=>`<li>${esc(r)}</li>`).join('')+'</ul>':'<div class="kpi"><span class="l">No risk-uplift factors detected.</span></div>'}
+        </div>
+        <div class="card"><h3>Demands & Needs</h3>
+          ${c.demandsAndNeeds?.productClasses?.length?`<div class="chip-row">${c.demandsAndNeeds.productClasses.map(p=>`<span class="chip active">${esc(p)}</span>`).join('')}</div><div style="font-size:12px;line-height:1.6"><strong>Events of concern:</strong> ${esc(c.demandsAndNeeds.eventsOfConcern||'—')}<br><strong>Past claims:</strong> ${esc(c.demandsAndNeeds.pastClaims||'—')}<br><strong>Capacity to bear loss:</strong> ${esc(c.demandsAndNeeds.capacityToBearLoss||'—')}<br><strong>Advice basis:</strong> ${esc(c.demandsAndNeeds.adviceBasis||'—')}</div>`:'<div class="kpi"><span class="l">Not yet captured (complete onboarding).</span></div>'}
+        </div>
+        <div class="card"><h3>Documents · ${(c.kyc?.documentsHeld||[]).length}</h3>
+          ${(c.kyc?.documentsHeld||[]).length?(c.kyc.documentsHeld.map(d=>`<div class="doc-row"><span class="dtype">${esc(d.type)}</span><span class="dname">${esc(d.filename)}</span><span class="dmeta">${bytes(d.size)} · captured ${fmtDate(d.capturedAt)}${d.expiresAt?' · expires '+fmtDate(d.expiresAt):''}</span><span class="dhash" title="${esc(d.sha256)}">${esc(d.sha256?.slice(0,12))}…</span><button class="btn sm ghost" onclick="downloadDocument('${d.blobRef}')">↓</button></div>`).join('')):'<div class="kpi"><span class="l">No documents captured.</span></div>'}
+        </div>
+        ${c.entityType==='entity'?`<div class="card"><h3>Beneficial owners · ${(c.kyc?.beneficialOwners||[]).length}</h3>${(c.kyc?.beneficialOwners||[]).length?c.kyc.beneficialOwners.map(b=>`<div class="kpi"><span class="l">${esc(b.name)} <span class="tag muted">${b.pct}%</span>${b.pep?' <span class="tag red">PEP</span>':''}</span><span class="v">${esc(b.role||'')}</span></div>`).join(''):'<div class="kpi"><span class="l">No BOs recorded.</span></div>'}</div>`:''}
+      </div>
+    </div>`,{wide:true});
+}
+async function reSanctionsCheck(id){
+  const c=state.clients.find(x=>x.id===id);if(!c)return;
+  const adv=state.advisers[0]?.id||'';
+  const result=prompt('Sanctions check result (clear / match / review):','clear');
+  if(!result)return;
+  c.kyc.sanctionsStatus=result;c.kyc.sanctionsCheckedAt=now();c.kyc.sanctionsCheckedBy=adv;
+  const g=suggestRiskGrade(c);c.kyc.riskGrade=g.grade;
+  await saveClient(c,'client.kyc.sanctions','Sanctions re-checked: '+result);
+  closeModal();render();
+}
+async function confirmArchive(id){
+  if(!confirm('Archive client? (soft-delete · retained 6 years per FCA SYSC)'))return;
+  const c=state.clients.find(x=>x.id===id);if(!c)return;
+  await archiveClient(c,'Soft-archived from client detail view');closeModal();render();
+}
+function exportCDD(id){
+  const c=state.clients.find(x=>x.id===id);if(!c)return;
+  const md=cddCertificateMarkdown(c);
+  const blob=new Blob([md],{type:'text/markdown'});const u=URL.createObjectURL(blob);
+  const a=document.createElement('a');a.href=u;a.download=`CDD-${clientDisplayName(c).replace(/\s+/g,'_')}-${fmtDateISO(now())}.md`;a.click();
+  setTimeout(()=>URL.revokeObjectURL(u),1500);toast('CDD certificate downloaded');
+}
+function cddCertificateMarkdown(c){
+  const adv=state.advisers.find(a=>a.id===c.adviserId);
+  const f=state.firm||{};
+  return `# CDD Certificate · ${clientDisplayName(c)}\n\n_Generated by FallInsuranceOnboard v${VERSION} · ${fmtDateTime(now())}_\n\n## Firm\n- **Name:** ${f.name||'—'}\n- **FCA ref:** ${f.fcaRefNo||'—'}\n- **IDD attested:** ${f.iddAttested?'YES · '+fmtDate(f.iddAttestedAt):'no'}\n\n## Client\n- **Display name:** ${clientDisplayName(c)}\n- **Category:** ${c.customerCategory}\n- **Entity type:** ${c.entityType}\n- **DOB / incorp:** ${c.dob||c.incorporationDate||'—'}\n- **Nationality / country:** ${c.nationality} / ${c.countryOfResidence}\n- **Created:** ${fmtDate(c.createdAt)}\n\n## KYC\n- **Status:** ${c.kyc?.status}\n- **Risk grade:** ${c.kyc?.riskGrade}\n- **PEP:** ${c.kyc?.pepFlag?'YES — '+(c.kyc.pepDetails||''):'no'}\n- **Sanctions:** ${c.kyc?.sanctionsStatus} (checked ${fmtDateTime(c.kyc?.sanctionsCheckedAt)} by ${c.kyc?.sanctionsCheckedBy||'—'})\n- **Source of funds:** ${c.kyc?.sourceOfFunds||'—'} · ${c.kyc?.sourceOfFundsNotes||''}\n- **Vulnerable customer:** ${c.kyc?.vulnerableCustomerFlag?'YES — '+(c.kyc.vulnerabilityCategory||''):'no'}\n- **Last review:** ${fmtDate(c.kyc?.lastReviewAt)} · next due ${fmtDate(c.kyc?.nextReviewDue)}\n\n## Documents held\n${(c.kyc?.documentsHeld||[]).map(d=>`- **${d.type}** · ${d.filename} · sha256:${d.sha256} · captured ${fmtDate(d.capturedAt)}${d.expiresAt?' · expires '+fmtDate(d.expiresAt):''}`).join('\n')||'_(none)_'}\n\n## Demands & Needs (IDD Art 20)\n- **Product classes:** ${(c.demandsAndNeeds?.productClasses||[]).join(', ')||'—'}\n- **Events of concern:** ${c.demandsAndNeeds?.eventsOfConcern||'—'}\n- **Past claims:** ${c.demandsAndNeeds?.pastClaims||'—'}\n- **Capacity to bear loss:** ${c.demandsAndNeeds?.capacityToBearLoss||'—'}\n- **Advice basis:** ${c.demandsAndNeeds?.adviceBasis||'—'}\n\n## Adviser of record\n- **Name:** ${adv?.name||'—'}\n- **FCA ref:** ${adv?.fcaRefNo||'—'}\n- **SM&CR role:** ${adv?.smcrRole||'—'}\n\n---\n_Audit chain entries: ${state.audit.filter(e=>e.clientId===c.id).length} · prevHash chained · 6yr retention per FCA SYSC._\n`;
+}
+function continueWizard(id){
+  const c=state.clients.find(x=>x.id===id);if(!c)return;
+  state.ui.wizard={clientId:id,step:1,client:JSON.parse(JSON.stringify(c))};
+  closeModal();renderWizard();
+}
+
+// ════════════════════════════════════════════════════════════════
+// ONBOARDING WIZARD · 10 steps
+// ════════════════════════════════════════════════════════════════
+const WIZARD_STEPS=[
+  {n:1,id:'category',label:'Category'},
+  {n:2,id:'identity',label:'Identity'},
+  {n:3,id:'contact',label:'Contact'},
+  {n:4,id:'business',label:'Business'},
+  {n:5,id:'demands',label:'D&N'},
+  {n:6,id:'cdd',label:'CDD'},
+  {n:7,id:'pep',label:'PEP/SAN'},
+  {n:8,id:'vuln',label:'Vulner.'},
+  {n:9,id:'docs',label:'Docs'},
+  {n:10,id:'commit',label:'Commit'}
+];
+function newClient(){
+  const c=newClientRec();
+  state.ui.wizard={clientId:c.id,step:1,client:c,fresh:true};
+  renderWizard();
+}
+function renderWizard(){
+  if(!state.ui.wizard)return;
+  const w=state.ui.wizard;const c=w.client;
+  const isCommercial=c.entityType==='entity'||c.customerCategory==='commercial'||c.customerCategory==='large-risk';
+  openModalHTML('wizard',`<h3>${w.fresh?'Onboard new client':'Edit onboarding'} <span class="meta" style="font-family:var(--mono);font-size:10px;color:var(--brass);margin-left:8px">step ${w.step}/10</span></h3>
+    <div class="wizard">
+      <div class="wizard-steps">${WIZARD_STEPS.map(s=>{
+        const skip=s.id==='business'&&!isCommercial;
+        return `<div class="wstep ${w.step===s.n?'active':''} ${w.step>s.n?'done':''} ${skip?'skip':''}" onclick="jumpStep(${s.n})"><span class="n">${s.n}</span>${esc(s.label)}</div>`;
+      }).join('')}</div>
+      <div class="wizard-body">${stepHTML(w.step,c,isCommercial)}</div>
+      <div class="wizard-foot">
+        <button class="btn ghost" onclick="closeWizard()">cancel</button>
+        <div style="display:flex;gap:6px">
+          ${w.step>1?'<button class="btn" onclick="prevStep()">← previous</button>':''}
+          ${w.step<10?`<button class="btn primary" onclick="nextStep()">next →</button>`:`<button class="btn primary" onclick="commitWizard()">✓ commit + add</button>`}
+        </div>
+      </div>
+    </div>`,{wide:true,noClose:true});
+}
+function closeWizard(){if(confirm('Discard onboarding progress?')){state.ui.wizard=null;closeModal()}}
+function jumpStep(n){if(!state.ui.wizard)return;state.ui.wizard.step=n;renderWizard()}
+function prevStep(){if(!state.ui.wizard||state.ui.wizard.step<=1)return;state.ui.wizard.step--;renderWizard()}
+function nextStep(){
+  if(!state.ui.wizard)return;
+  const w=state.ui.wizard;
+  const ok=collectStep(w.step,w.client);if(!ok)return;
+  // skip business step if not commercial
+  if(w.step===3&&w.client.entityType!=='entity'&&w.client.customerCategory==='consumer'){w.step=5}
+  else w.step++;
+  if(w.step>10)w.step=10;
+  renderWizard();
+}
+function collectStep(step,c){
+  const root=$('#modalRoot');
+  const F=(name)=>root.querySelector(`[name="${name}"]`);
+  const FV=(name)=>F(name)?.value||'';
+  const FC=(name)=>F(name)?.checked||false;
+  const FA=(name)=>Array.from(root.querySelectorAll(`[name="${name}"]:checked`)).map(x=>x.value);
+  switch(step){
+    case 1: c.customerCategory=FV('customerCategory')||c.customerCategory; c.entityType=FV('entityType')||c.entityType; if((c.customerCategory==='commercial'||c.customerCategory==='large-risk')&&c.entityType==='individual')c.entityType='entity'; break;
+    case 2:
+      if(c.entityType==='individual'){
+        c.title=FV('title');c.firstName=FV('firstName');c.middleName=FV('middleName');c.lastName=FV('lastName');
+        c.dob=FV('dob');c.nationality=FV('nationality')||'GB';c.countryOfResidence=FV('countryOfResidence')||'GB';
+        c.nino=FV('nino');c.utr=FV('utr');
+        if(!c.firstName||!c.lastName){toast('First and last name required');return false}
+      }else{
+        c.entityName=FV('entityName');c.tradingName=FV('tradingName');c.companiesHouseNo=FV('companiesHouseNo');
+        c.vatNumber=FV('vatNumber');c.industrySIC=FV('industrySIC');c.industry=FV('industry');c.incorporationDate=FV('incorporationDate');
+        if(!c.entityName){toast('Entity name required');return false}
+      } break;
+    case 3:
+      c.email=FV('email');c.phone=FV('phone');
+      c.address={line1:FV('addr1'),line2:FV('addr2'),city:FV('city'),region:FV('region')||'England',postcode:FV('postcode'),country:FV('country')||'GB',since:FV('addrSince')};
+      break;
+    case 4:
+      if(c.entityType==='entity'){
+        c.businessProfile=c.businessProfile||{};
+        c.businessProfile.turnover=+FV('turnover')||0;c.businessProfile.headcount=+FV('headcount')||0;
+        c.businessProfile.sector=FV('sector');c.businessProfile.priorInsurerHistory=FV('priorInsurerHistory');
+        c.businessProfile.priorClaimsCount5y=+FV('priorClaimsCount5y')||0;
+        c.businessProfile.priorClaimsTotal5y=+FV('priorClaimsTotal5y')||0;
+        c.businessProfile.contractRequirements=FV('contractRequirements');
+      } break;
+    case 5:
+      c.demandsAndNeeds=c.demandsAndNeeds||{};
+      c.demandsAndNeeds.productClasses=FA('productClass');
+      c.demandsAndNeeds.eventsOfConcern=FV('eventsOfConcern');c.demandsAndNeeds.pastClaims=FV('pastClaims');
+      c.demandsAndNeeds.contractualRequirements=FV('contractualRequirements');c.demandsAndNeeds.capacityToBearLoss=FV('capacityToBearLoss');
+      c.demandsAndNeeds.coverSought=FV('coverSought');c.demandsAndNeeds.adviceBasis=FV('adviceBasis')||'advisory';
+      if(!c.demandsAndNeeds.productClasses.length){toast('Select at least one product class');return false} break;
+    case 6:
+      const trig=checkAmlTrigger(c);
+      c.kyc.amlTriggered=trig.triggered;c.kyc.amlTriggerReason=trig.reason;
+      c.kyc.sourceOfFunds=FV('sourceOfFunds');c.kyc.sourceOfFundsNotes=FV('sourceOfFundsNotes');
+      c.kyc.sourceOfWealth=FV('sourceOfWealth');c.kyc.sourceOfWealthNotes=FV('sourceOfWealthNotes');
+      // beneficial owners (commercial) — collected via JSON textarea
+      if(c.entityType==='entity'){
+        const boJson=FV('beneficialOwnersJson');
+        if(boJson){try{c.kyc.beneficialOwners=JSON.parse(boJson)}catch(e){toast('Beneficial owners JSON invalid');return false}}
+      } break;
+    case 7:
+      c.kyc.pepFlag=FC('pepFlag');c.kyc.pepDetails=FV('pepDetails');
+      c.kyc.sanctionsStatus=FV('sanctionsStatus')||'not-checked';
+      if(c.kyc.sanctionsStatus!=='not-checked'){c.kyc.sanctionsCheckedAt=now();c.kyc.sanctionsCheckedBy=state.advisers[0]?.id||''} break;
+    case 8:
+      c.kyc.vulnerableCustomerFlag=FC('vulnerableCustomerFlag');
+      c.kyc.vulnerabilityCategory=FV('vulnerabilityCategory');
+      c.kyc.vulnerabilityNotes=FV('vulnerabilityNotes');
+      c.kyc.vulnerabilityType=FV('vulnerabilityType')||'permanent';
+      break;
+    case 9: break; // docs handled inline
+    case 10: break; // commit handled separately
+  }
+  return true;
+}
+function stepHTML(n,c,isCommercial){
+  switch(n){
+    case 1: return `<h3>Customer category</h3><div class="step-sub">IDD Article 20 distinguishes consumer / commercial / large-risk customers. This drives downstream conduct (ICOBS) + CDD requirements.</div>
+      <div class="cat-cards">
+        <div class="cat-card ${c.customerCategory==='consumer'?'active':''}" onclick="document.querySelector('[name=customerCategory][value=consumer]').click()"><div class="ct">Consumer</div><div class="cd">An individual buying insurance wholly or mainly outside of trade, business or profession. Higher conduct protections under ICOBS.</div></div>
+        <div class="cat-card ${c.customerCategory==='commercial'?'active':''}" onclick="document.querySelector('[name=customerCategory][value=commercial]').click()"><div class="ct">Commercial</div><div class="cd">Business / SME with annual premium under £600k for commercial property &amp; similar limits per class. Reduced ICOBS but full IDD.</div></div>
+        <div class="cat-card ${c.customerCategory==='large-risk'?'active':''}" onclick="document.querySelector('[name=customerCategory][value=large-risk)']?.click?.()||(document.querySelector('[name=customerCategory][value=large-risk]')||{}).click?.()"><div class="ct">Large-risk</div><div class="cd">Marine / aviation / transport / large commercial above turnover £12.5M, headcount 250, balance sheet £6.2M. Most ICOBS dis-applied.</div></div>
+        <div class="cat-card" onclick="document.querySelector('[name=entityType][value=entity]').click()"><div class="ct">Entity type → ${c.entityType}</div><div class="cd">${c.entityType==='entity'?'Trading as a company / partnership / LLP / charity / trust.':'Individual person (may be sole trader).'}</div></div>
+      </div>
+      <div style="display:none">
+        <input type="radio" name="customerCategory" value="consumer" ${c.customerCategory==='consumer'?'checked':''} onchange="updateCatCards()">
+        <input type="radio" name="customerCategory" value="commercial" ${c.customerCategory==='commercial'?'checked':''} onchange="updateCatCards()">
+        <input type="radio" name="customerCategory" value="large-risk" ${c.customerCategory==='large-risk'?'checked':''} onchange="updateCatCards()">
+        <input type="radio" name="entityType" value="individual" ${c.entityType==='individual'?'checked':''} onchange="updateCatCards()">
+        <input type="radio" name="entityType" value="entity" ${c.entityType==='entity'?'checked':''} onchange="updateCatCards()">
+      </div>`;
+    case 2:
+      return isCommercial?`<h3>Identity · entity</h3><div class="step-sub">Companies House details + SIC code drives industry risk scoring.</div>
+        <div class="row"><div class="field"><label>Entity name <span class="req">*</span></label><input name="entityName" value="${esc(c.entityName)}" required></div><div class="field"><label>Trading name</label><input name="tradingName" value="${esc(c.tradingName)}"></div></div>
+        <div class="row"><div class="field"><label>Companies House no</label><input name="companiesHouseNo" value="${esc(c.companiesHouseNo)}"></div><div class="field"><label>Incorporation date</label><input type="date" name="incorporationDate" value="${c.incorporationDate||''}"></div></div>
+        <div class="row"><div class="field"><label>VAT number</label><input name="vatNumber" value="${esc(c.vatNumber)}"></div><div class="field"><label>Industry SIC</label><select name="industrySIC">${INDUSTRY_SIC.map(s=>`<option value="${s.v}" ${c.industrySIC===s.v?'selected':''}>${esc(s.l)}</option>`).join('')}</select></div></div>
+        <div class="field"><label>Industry description (free text)</label><input name="industry" value="${esc(c.industry)}" placeholder="e.g. mid-tier UK SaaS publisher"></div>`
+      :`<h3>Identity · individual</h3><div class="step-sub">JMLSG Part II §16 — name / DOB / address / nationality / NINO are the standard insurance-broker identifiers.</div>
+        <div class="row3"><div class="field"><label>Title</label><select name="title"><option>Mr</option><option>Mrs</option><option>Ms</option><option>Miss</option><option>Mx</option><option>Dr</option><option>Other</option></select></div><div class="field"><label>First name <span class="req">*</span></label><input name="firstName" value="${esc(c.firstName)}" required></div><div class="field"><label>Last name <span class="req">*</span></label><input name="lastName" value="${esc(c.lastName)}" required></div></div>
+        <div class="row"><div class="field"><label>Middle name(s)</label><input name="middleName" value="${esc(c.middleName)}"></div><div class="field"><label>DOB <span class="req">*</span></label><input type="date" name="dob" value="${c.dob}" required></div></div>
+        <div class="row3"><div class="field"><label>Nationality (ISO-2)</label><input name="nationality" value="${esc(c.nationality)}" maxlength="2"></div><div class="field"><label>Country of residence</label><input name="countryOfResidence" value="${esc(c.countryOfResidence)}" maxlength="2"></div><div class="field"><label>NINO</label><input name="nino" value="${esc(c.nino)}" placeholder="QQ123456A"></div></div>
+        <div class="field"><label>UTR (if self-employed)</label><input name="utr" value="${esc(c.utr)}"></div>`;
+    case 3:
+      return `<h3>Contact + current address</h3><div class="step-sub">Use UK residential address. For non-UK clients, capture in country field — driver of jurisdiction risk.</div>
+        <div class="row"><div class="field"><label>Email</label><input type="email" name="email" value="${esc(c.email)}"></div><div class="field"><label>Phone</label><input name="phone" value="${esc(c.phone)}"></div></div>
+        <div class="row"><div class="field"><label>Address line 1</label><input name="addr1" value="${esc(c.address?.line1)}"></div><div class="field"><label>Address line 2</label><input name="addr2" value="${esc(c.address?.line2)}"></div></div>
+        <div class="row3"><div class="field"><label>City / town</label><input name="city" value="${esc(c.address?.city)}"></div><div class="field"><label>Region</label><select name="region"><option>England</option><option>Wales</option><option>NI</option><option>Scotland</option></select></div><div class="field"><label>Postcode</label><input name="postcode" value="${esc(c.address?.postcode)}"></div></div>
+        <div class="row"><div class="field"><label>Country (ISO-2)</label><input name="country" value="${esc(c.address?.country||'GB')}" maxlength="2"></div><div class="field"><label>Resident since</label><input type="date" name="addrSince" value="${c.address?.since||''}"></div></div>`;
+    case 4:
+      return isCommercial?`<h3>Business profile</h3><div class="step-sub">Drives capacity-to-bear-loss reasoning + AML risk score weight.</div>
+        <div class="row"><div class="field"><label>Annual turnover (£)</label><input type="number" name="turnover" value="${c.businessProfile?.turnover||0}"></div><div class="field"><label>Headcount</label><input type="number" name="headcount" value="${c.businessProfile?.headcount||0}"></div></div>
+        <div class="row"><div class="field"><label>Sector / trade</label><input name="sector" value="${esc(c.businessProfile?.sector)}"></div><div class="field"><label>Prior insurer history</label><input name="priorInsurerHistory" value="${esc(c.businessProfile?.priorInsurerHistory)}"></div></div>
+        <div class="row"><div class="field"><label>Claims (count, last 5y)</label><input type="number" name="priorClaimsCount5y" value="${c.businessProfile?.priorClaimsCount5y||0}"></div><div class="field"><label>Claims total (£, last 5y)</label><input type="number" name="priorClaimsTotal5y" value="${c.businessProfile?.priorClaimsTotal5y||0}"></div></div>
+        <div class="field"><label>Contractual cover requirements (landlord / client / financier)</label><textarea name="contractRequirements">${esc(c.businessProfile?.contractRequirements)}</textarea></div>`
+      :`<h3>Business profile · skipped</h3><div class="step-sub">This step applies to commercial / entity clients only. Click <strong>next</strong> to continue.</div>`;
+    case 5:
+      const checked=(c.demandsAndNeeds?.productClasses)||[];
+      return `<h3>Demands &amp; needs · IDD Art 20</h3><div class="step-sub">Select product classes the client is exploring. Then capture the structured intake. This output is the Demands &amp; Needs Statement attached to any policy bound.</div>
+        <div class="field"><label>Product classes (select all that apply)</label>
+          <div class="chip-row" style="margin-bottom:8px">${PRODUCT_CLASSES.map(p=>`<label class="chip ${checked.includes(p.v)?'active':''}"><input type="checkbox" name="productClass" value="${p.v}" ${checked.includes(p.v)?'checked':''} style="display:none" onchange="this.parentElement.classList.toggle('active',this.checked)">${esc(p.l)}</label>`).join('')}</div>
+        </div>
+        <div class="field"><label>Events of concern (what risks worry the client?)</label><textarea name="eventsOfConcern">${esc(c.demandsAndNeeds?.eventsOfConcern)}</textarea></div>
+        <div class="field"><label>Past claims experience</label><textarea name="pastClaims">${esc(c.demandsAndNeeds?.pastClaims)}</textarea></div>
+        <div class="field"><label>Contractual requirements (contracts demanding specific cover)</label><textarea name="contractualRequirements">${esc(c.demandsAndNeeds?.contractualRequirements)}</textarea></div>
+        <div class="field"><label>Capacity to bear loss (excess preference, self-insurance appetite)</label><textarea name="capacityToBearLoss">${esc(c.demandsAndNeeds?.capacityToBearLoss)}</textarea></div>
+        <div class="field"><label>Cover sought (specific limits / sub-limits the client wants)</label><textarea name="coverSought">${esc(c.demandsAndNeeds?.coverSought)}</textarea></div>
+        <div class="field"><label>Advice basis</label><select name="adviceBasis"><option value="advisory" ${c.demandsAndNeeds?.adviceBasis==='advisory'?'selected':''}>advisory (broker recommends)</option><option value="non-advisory" ${c.demandsAndNeeds?.adviceBasis==='non-advisory'?'selected':''}>non-advisory (broker presents options)</option><option value="execution-only" ${c.demandsAndNeeds?.adviceBasis==='execution-only'?'selected':''}>execution-only (client chooses, no advice)</option></select></div>`;
+    case 6:
+      const trig=checkAmlTrigger(c);
+      return `<h3>CDD core · AML</h3><div class="step-sub">JMLSG Part II §16 — insurance brokers only do AML CDD where statutorily triggered: commercial entities (always, for BO discovery), life products, EDD scenarios.</div>
+        <div class="banner ${trig.triggered?'warn':'info'}">${trig.triggered?'<strong>CDD required.</strong> ':'<strong>CDD not statutorily required.</strong> '}${esc(trig.reason)}</div>
+        <div class="row"><div class="field"><label>Source of funds</label><select name="sourceOfFunds"><option value="">—</option><option value="earnings" ${c.kyc?.sourceOfFunds==='earnings'?'selected':''}>earnings (employment)</option><option value="business" ${c.kyc?.sourceOfFunds==='business'?'selected':''}>business income / trading profits</option><option value="savings" ${c.kyc?.sourceOfFunds==='savings'?'selected':''}>savings</option><option value="inheritance" ${c.kyc?.sourceOfFunds==='inheritance'?'selected':''}>inheritance</option><option value="property-sale" ${c.kyc?.sourceOfFunds==='property-sale'?'selected':''}>property sale</option><option value="business-sale" ${c.kyc?.sourceOfFunds==='business-sale'?'selected':''}>business sale</option><option value="gift" ${c.kyc?.sourceOfFunds==='gift'?'selected':''}>gift</option><option value="other" ${c.kyc?.sourceOfFunds==='other'?'selected':''}>other</option></select></div><div class="field"><label>SoF notes</label><input name="sourceOfFundsNotes" value="${esc(c.kyc?.sourceOfFundsNotes)}"></div></div>
+        <div class="row"><div class="field"><label>Source of wealth</label><input name="sourceOfWealth" value="${esc(c.kyc?.sourceOfWealth)}"></div><div class="field"><label>SoW notes</label><input name="sourceOfWealthNotes" value="${esc(c.kyc?.sourceOfWealthNotes)}"></div></div>
+        ${c.entityType==='entity'?`<div class="field"><label>Beneficial owners (JSON · array of <code>{name,dob,nationality,pct,pep,role}</code>)</label><textarea name="beneficialOwnersJson" style="font-family:var(--mono);font-size:11px;min-height:120px">${esc(JSON.stringify(c.kyc?.beneficialOwners||[],null,2))}</textarea><div class="hint">Persons with 25%+ ownership or control. Hold the firm's PSC register extract — capture it in Step 9 (docs).</div></div>`:''}`;
+    case 7:
+      return `<h3>PEP &amp; sanctions screen</h3><div class="step-sub">MLR 2017 regs.33-35 — Politically Exposed Persons trigger EDD. Sanctions screen mandatory pre-bind.</div>
+        <div class="field"><label><input type="checkbox" name="pepFlag" ${c.kyc?.pepFlag?'checked':''}> Client (or beneficial owner) is a PEP, RCA or close associate</label></div>
+        <div class="field"><label>PEP details (role / jurisdiction / period of office)</label><textarea name="pepDetails">${esc(c.kyc?.pepDetails)}</textarea></div>
+        <div class="field"><label>Sanctions check result</label><select name="sanctionsStatus"><option value="not-checked" ${c.kyc?.sanctionsStatus==='not-checked'?'selected':''}>not yet checked</option><option value="clear" ${c.kyc?.sanctionsStatus==='clear'?'selected':''}>clear</option><option value="match" ${c.kyc?.sanctionsStatus==='match'?'selected':''}>match — STOP, escalate to MLRO</option><option value="review" ${c.kyc?.sanctionsStatus==='review'?'selected':''}>review (possible match, manual judgement)</option></select></div>
+        <div class="banner info">Sanctions sources: <a href="https://www.gov.uk/government/publications/the-uk-sanctions-list" target="_blank" rel="noopener">UK Sanctions List (gov.uk)</a> · <a href="https://sanctionssearchapp.ofsi.hmtreasury.gov.uk/" target="_blank" rel="noopener">OFSI Search</a> · <a href="https://eeas.europa.eu/topics/sanctions-policy/8442/consolidated-list-sanctions_en" target="_blank" rel="noopener">EU consolidated list</a></div>`;
+    case 8:
+      return `<h3>Vulnerable customer · FG21/1</h3><div class="step-sub">FCA FG21/1: identify circumstances that increase the risk of customer harm. Document adjustments made.</div>
+        <div class="field"><label><input type="checkbox" name="vulnerableCustomerFlag" ${c.kyc?.vulnerableCustomerFlag?'checked':''}> Vulnerability factor present</label></div>
+        <div class="row"><div class="field"><label>Category</label><select name="vulnerabilityCategory"><option value="">—</option><option value="health" ${c.kyc?.vulnerabilityCategory==='health'?'selected':''}>health (physical / mental / cognitive)</option><option value="life-event" ${c.kyc?.vulnerabilityCategory==='life-event'?'selected':''}>life event (bereavement / divorce / job loss)</option><option value="resilience" ${c.kyc?.vulnerabilityCategory==='resilience'?'selected':''}>resilience (low income / debt / no savings)</option><option value="capability" ${c.kyc?.vulnerabilityCategory==='capability'?'selected':''}>capability (language / literacy / digital)</option></select></div><div class="field"><label>Type</label><select name="vulnerabilityType"><option value="permanent" ${c.kyc?.vulnerabilityType==='permanent'?'selected':''}>permanent</option><option value="temporary" ${c.kyc?.vulnerabilityType==='temporary'?'selected':''}>temporary</option><option value="situational" ${c.kyc?.vulnerabilityType==='situational'?'selected':''}>situational</option></select></div></div>
+        <div class="field"><label>Notes + adjustments made (alternative comms, additional time, third-party support)</label><textarea name="vulnerabilityNotes">${esc(c.kyc?.vulnerabilityNotes)}</textarea></div>`;
+    case 9:
+      return `<h3>Document capture</h3><div class="step-sub">Files stored in IDB as Blobs · SHA-256 hashed · type-based expiry. Files never leave the device.</div>
+        <input type="file" id="wizDocFile" style="display:none" onchange="onWizDocPick(event)">
+        <div class="dz" onclick="document.getElementById('wizDocFile').click()" ondragover="event.preventDefault();this.classList.add('hover')" ondragleave="this.classList.remove('hover')" ondrop="event.preventDefault();this.classList.remove('hover');onWizDocDrop(event)">
+          <div class="icon">↥</div>
+          <div class="label">Drop file or click to choose</div>
+        </div>
+        <div class="field" style="margin-top:14px"><label>Document type</label><select id="wizDocType">${DOC_TYPES.map(d=>`<option value="${d.v}">${esc(d.l)}</option>`).join('')}</select></div>
+        <div class="doc-list">${(c.kyc?.documentsHeld||[]).map(d=>`<div class="doc-row"><span class="dtype">${esc(d.type)}</span><span class="dname">${esc(d.filename)}</span><span class="dmeta">${bytes(d.size)} · ${fmtDate(d.capturedAt)}${d.expiresAt?' · exp '+fmtDate(d.expiresAt):''}</span><span class="dhash">${esc(d.sha256?.slice(0,12))}…</span><button class="btn sm danger" onclick="removeWizDoc('${d.id}')">remove</button></div>`).join('')||'<div class="kpi"><span class="l">No documents captured yet.</span></div>'}</div>`;
+    case 10:
+      const riskInfo=suggestRiskGrade(c);const trigC=checkAmlTrigger(c);
+      const dates=computeReviewDates(c);
+      c.kyc.riskGrade=riskInfo.grade;c.kyc.lastReviewAt=dates.lastReviewAt;c.kyc.nextReviewDue=dates.nextReviewDue;c.kyc.status=c.kyc.status==='pending'?'verified':c.kyc.status;
+      return `<h3>Confirm + commit</h3><div class="step-sub">Review the auto-computed risk + review cadence. On commit, the client is written to IDB, broadcast on <code>fall-insurance</code> mesh, audit chain entry appended (SHA-256 prevHash chained).</div>
+        <div class="card"><h3>${esc(clientDisplayName(c))}</h3>
+          <div class="kpi"><span class="l">Category</span><span class="v">${esc(c.customerCategory)} · ${esc(c.entityType)}</span></div>
+          <div class="kpi"><span class="l">Product classes</span><span class="v">${(c.demandsAndNeeds?.productClasses||[]).join(', ')||'—'}</span></div>
+          <div class="kpi"><span class="l">AML trigger</span><span class="v ${trigC.triggered?'amber':'green'}">${trigC.triggered?'YES':'no'}</span></div>
+          <div class="kpi"><span class="l">PEP / sanctions</span><span class="v ${c.kyc?.pepFlag||c.kyc?.sanctionsStatus==='match'?'red':''}">${c.kyc?.pepFlag?'PEP':'—'} / ${esc(c.kyc?.sanctionsStatus||'not-checked')}</span></div>
+          <div class="kpi"><span class="l">Vulnerable</span><span class="v ${c.kyc?.vulnerableCustomerFlag?'amber':''}">${c.kyc?.vulnerableCustomerFlag?'YES — '+(c.kyc.vulnerabilityCategory||''):'no'}</span></div>
+          <div class="kpi"><span class="l">Auto risk grade</span><span class="v ${riskInfo.grade==='high'?'red':riskInfo.grade==='medium'?'amber':'green'}">${riskInfo.grade} · score ${riskInfo.score}</span></div>
+          <div class="kpi"><span class="l">Documents captured</span><span class="v">${(c.kyc?.documentsHeld||[]).length}</span></div>
+          <div class="kpi"><span class="l">Next AML review</span><span class="v">${fmtDate(dates.nextReviewDue)}</span></div>
+          <div class="kpi"><span class="l">Beneficial owners</span><span class="v">${(c.kyc?.beneficialOwners||[]).length}</span></div>
+        </div>
+        ${riskInfo.reasons.length?`<div class="card"><h3>Risk score reasons</h3><ul style="margin:0;padding-left:18px;font-size:12px;color:var(--cream-dim);line-height:1.7">${riskInfo.reasons.map(r=>`<li>${esc(r)}</li>`).join('')}</ul></div>`:''}
+        <div class="banner info">On commit: writes <code>client.created</code> on <code>fall-insurance</code> + <code>fall-signal</code> meshes; appends signed audit entry (sha256 chained to prior); marks <code>onboardCompleted=true</code>; closes wizard and returns to clients list.</div>`;
+  }
+  return '<div class="empty"><div class="big">unknown step</div></div>';
+}
+function updateCatCards(){
+  if(!state.ui.wizard)return;
+  collectStep(1,state.ui.wizard.client);
+  renderWizard();
+}
+async function onWizDocPick(e){
+  const f=e.target.files[0];if(!f)return;
+  const type=$('#wizDocType').value;
+  await addWizDoc(f,type);
+  e.target.value='';
+}
+function onWizDocDrop(e){
+  const f=e.dataTransfer.files[0];if(!f)return;
+  const type=$('#wizDocType').value;addWizDoc(f,type);
+}
+async function addWizDoc(file,type){
+  const c=state.ui.wizard.client;
+  const meta=await storeDocument(file,c.id,type,'Captured via wizard step 9');
+  c.kyc.documentsHeld=c.kyc.documentsHeld||[];c.kyc.documentsHeld.push(meta);
+  renderWizard();
+  toast('Document added · sha256: '+meta.sha256.slice(0,12)+'…');
+}
+async function removeWizDoc(id){
+  const c=state.ui.wizard.client;
+  const idx=c.kyc.documentsHeld.findIndex(d=>d.blobRef===id);if(idx<0)return;
+  await deleteDocument(id);c.kyc.documentsHeld.splice(idx,1);
+  renderWizard();toast('Document removed');
+}
+async function commitWizard(){
+  const w=state.ui.wizard;if(!w)return;const c=w.client;
+  c.app=c.app||{};c.app.onboardCompleted=true;
+  const dates=computeReviewDates(c);c.kyc.lastReviewAt=dates.lastReviewAt;c.kyc.nextReviewDue=dates.nextReviewDue;
+  const riskInfo=suggestRiskGrade(c);c.kyc.riskGrade=riskInfo.grade;
+  if(c.kyc.status==='pending')c.kyc.status='verified';
+  await saveClient(c,'client.created','Onboarding committed via 10-step wizard');
+  // also fire on fall-client cross-bundle mesh
+  try{const bc=new BroadcastChannel('fall-client');bc.postMessage({v:1,type:'client.created',source:TOOLNAME,ts:now(),payload:c});bc.close()}catch(e){}
+  state.ui.wizard=null;
+  closeModal();render();toast('Client onboarded · risk: '+riskInfo.grade);
+}
+
+// ════════════════════════════════════════════════════════════════
+// IDD Q&A  ·  T0 router + T3 BYOK cascade
+// ════════════════════════════════════════════════════════════════
+const T0_RULES=[
+  {k:['consumer','commercial','large risk','large-risk','customer category','category'],a:'**Customer category (IDD §17(2)).** Three categories: (1) *consumer* — an individual buying mainly outside trade/business/profession; full ICOBS protections. (2) *commercial customer* — SME below large-risk thresholds; reduced ICOBS, full IDD. (3) *large risk* — marine/aviation/transport OR turnover >£12.5M, headcount >250, balance sheet >£6.2M; most ICOBS disapplied. Set on the client record in step 1 of the wizard.'},
+  {k:['demands','needs','idd 20','article 20'],a:'**Demands & Needs (IDD Article 20).** Every insurance recommendation must be consistent with the customer\'s demands and needs. Capture: events of concern, past claims, contractual requirements, capacity to bear loss, cover sought, advice basis (advisory/non-advisory/execution-only). Output is the *Demands & Needs Statement* attached to the policy — sibling tool `fallinsurancepaper` renders the formal version.'},
+  {k:['cdd','aml','when','trigger'],a:'**When does AML CDD trigger for an insurance broker?** JMLSG Part II §16 / MLR 2017 reg.8(2)(b): (1) any commercial entity client (always — BO discovery), (2) life insurance with annual premium >£1k or single premium >£2.5k, (3) aggregate GI premium ≥£15k typical EDD trigger, (4) any PEP, (5) any high-risk jurisdiction. Pure GI consumer products under thresholds do NOT trigger statutory CDD — but ICOBS conduct still applies.'},
+  {k:['pep','politically exposed'],a:'**PEP definition (MLR 2017 reg.35(12)).** A natural person entrusted with prominent public functions — heads of state, government ministers, judges, MPs, senior military, central bank board, ambassadors, senior managers of state-owned enterprises. Plus family members + close associates. EDD required: senior management approval, source of wealth, enhanced ongoing monitoring.'},
+  {k:['sanctions','ofsi','consolidated list'],a:'**Sanctions screen.** Mandatory pre-bind: (1) UK Sanctions List (gov.uk), (2) OFSI Consolidated List, (3) EU list (for legacy + EU exposures), (4) OFAC if any US nexus. Match = STOP, escalate to MLRO, do not bind, file SAR if appropriate. Re-screen on: renewal, MTA, named-driver add, relationship change.'},
+  {k:['vulnerable','fg21','fg 21/1','vulnerability'],a:'**Vulnerable customer · FCA FG21/1.** Four drivers: (1) **health** — physical/mental/cognitive conditions, (2) **life events** — bereavement, divorce, job loss, (3) **resilience** — low income, debt, no savings, (4) **capability** — language, literacy, digital. Document the type (permanent/temporary/situational) + adjustments made (longer time, alternative comms, third-party support). Consumer Duty (PRIN 12) makes this an outcome-tested obligation, not a box-tick.'},
+  {k:['icobs','conduct of business'],a:'**ICOBS** = Insurance: Conduct of Business sourcebook. Key sections for brokers: ICOBS 2 (general principles), ICOBS 4 (info about firm + capacity), ICOBS 5 (identify demands & needs + suitability statement for advised sales), ICOBS 6 (info about policy), ICOBS 7 (cancellation rights), ICOBS 8 (claims handling). Reduced ICOBS regime for commercial customers; mostly disapplied for large risks.'},
+  {k:['pi minimum','pii minimum','minimum cover','professional indemnity'],a:'**PI minimum (FCA IPRU-INV 13.1).** Insurance distribution firms — Article 10(4) IDD minimum: **€1,300,380 each claim** and **€1,924,560 aggregate**. FCA uplifts in GBP — current floor £1.5M each / £3M aggregate is a safe target. Mortgage/IFA brokers have separate thresholds. Track expiry in the Firm tab; renewal lapse = activity must cease.'},
+  {k:['cdd directors','beneficial owners','psc','25%','beneficial ownership'],a:'**Beneficial owners (commercial CDD).** MLR 2017 reg.5(1)(b) + reg.28(4): identify any natural person owning **>25%** (shares/voting rights) or otherwise exercising control. Reg.28(8): take reasonable measures to verify. Capture: name, DOB, nationality, % held, role. Cross-check against Companies House PSC register + capture an extract in step 9. PEP-screen each BO.'},
+  {k:['idd article 20','article 20','d&n'],a:'**IDD Article 20** is the operational anchor: distribute only products consistent with client demands & needs. Captured in wizard step 5 + persisted on the client record. Sibling tool `fallinsurancepaper` (prime 853) renders the formal Demands & Needs Statement that goes out alongside the policy.'},
+  {k:['idd article 17','article 17','non-advisory','execution-only'],a:'**IDD Article 17 advisory vs non-advisory.** Three modes: (a) *advisory* — broker recommends a specific product; (b) *non-advisory* — broker presents options without recommendation; (c) *execution-only* — client chooses, broker just transacts. Each carries different obligations under ICOBS 5 + 6. Captured per-client in the D&N step.'},
+  {k:['pog','product oversight','product governance','idd pog'],a:'**IDD Product Oversight & Governance (POG).** Article 25 + FCA PROD 4: manufacturers + distributors must operate POG arrangements — identify target market, test product, review periodically. Brokers acting as co-manufacturers (rare) take on full POG. Distribution-only brokers must understand the target market and not distribute outside it.'},
+];
+function answerT0(q){
+  const ql=q.toLowerCase();
+  for(const r of T0_RULES){
+    if(r.k.some(k=>ql.includes(k.toLowerCase())))return{src:'T0 · IDD rules',answer:r.a};
+  }
+  return null;
+}
+async function askT3(q){
+  const keys=state.settings;
+  const ctx=`You are an FCA + IDD compliance assistant for a UK insurance broker. Be precise + cite specific FCA / MLR / JMLSG sections where relevant. Current client context: ${state.ui.activeClient?JSON.stringify(state.clients.find(c=>c.id===state.ui.activeClient)?.kyc||{}).slice(0,500):'(no active client)'}`;
+  const messages=[{role:'system',content:ctx},{role:'user',content:q}];
+  // anthropic
+  if(keys.anthropicKey){
+    try{
+      const r=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'content-type':'application/json','anthropic-version':'2023-06-01','x-api-key':keys.anthropicKey,'anthropic-dangerous-direct-browser-access':'true'},body:JSON.stringify({model:'claude-haiku-4-5-20251001',max_tokens:1024,system:ctx,messages:[{role:'user',content:q}]})});
+      const j=await r.json();if(j.content?.[0]?.text)return{src:'T3 · Anthropic',answer:j.content[0].text};
+    }catch(e){console.warn(e)}
+  }
+  if(keys.openaiKey){
+    try{const r=await fetch('https://api.openai.com/v1/chat/completions',{method:'POST',headers:{'content-type':'application/json','authorization':'Bearer '+keys.openaiKey},body:JSON.stringify({model:'gpt-4o-mini',messages,max_tokens:1024})});const j=await r.json();if(j.choices?.[0]?.message?.content)return{src:'T3 · OpenAI',answer:j.choices[0].message.content}}catch(e){}
+  }
+  if(keys.geminiKey){
+    try{const r=await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${keys.geminiKey}`,{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({contents:[{parts:[{text:ctx+'\n\n'+q}]}]})});const j=await r.json();const t=j.candidates?.[0]?.content?.parts?.[0]?.text;if(t)return{src:'T3 · Gemini',answer:t}}catch(e){}
+  }
+  if(keys.openrouterKey){
+    try{const r=await fetch('https://openrouter.ai/api/v1/chat/completions',{method:'POST',headers:{'content-type':'application/json','authorization':'Bearer '+keys.openrouterKey},body:JSON.stringify({model:'meta-llama/llama-3.1-8b-instruct',messages,max_tokens:1024})});const j=await r.json();if(j.choices?.[0]?.message?.content)return{src:'T3 · OpenRouter',answer:j.choices[0].message.content}}catch(e){}
+  }
+  return{src:'offline',answer:'No T0 rule matched and no T3 BYOK key configured. Add a key in Settings (gear icon) for free-form Q&A. T0 covers: category / demands & needs / CDD trigger / PEP / sanctions / vulnerable / ICOBS / PI min / beneficial owners / IDD Art 17, 20, POG.'};
+}
+function renderQA(){
+  return `${DISCLAIMER}
+  <div class="section-h"><div><h2>IDD Help · Q&amp;A</h2><div class="sub">T0 offline router · 12 rules · T3 BYOK fallback for nuanced questions</div></div></div>
+  <div class="card">
+    <div class="chat" id="chatBox">${state.chat.length?state.chat.map(m=>`<div class="msg ${m.role}">${esc(m.content).replace(/\\n/g,'<br>')}${m.src?`<div class="src">${esc(m.src)}</div>`:''}</div>`).join(''):'<div class="msg bot">Ask anything about IDD / CDD / ICOBS / PEP / sanctions / vulnerable customers / PI requirements. T0 answers are deterministic + cite FCA/MLR/JMLSG sections.<div class="src">T0 ready · 12 rules indexed</div></div>'}</div>
+    <form class="chat-input" onsubmit="event.preventDefault();askQA(this)"><input name="q" placeholder="e.g. when does AML CDD trigger?" required><button class="btn primary" type="submit">ask</button></form>
+  </div>`;
+}
+async function askQA(formEl){
+  const q=formEl.q.value.trim();if(!q)return;
+  state.chat.push({role:'user',content:q});formEl.q.value='';render();
+  const t0=answerT0(q);
+  if(t0){state.chat.push({role:'bot',content:t0.answer,src:t0.src});persistState();render();return}
+  const t3=await askT3(q);
+  state.chat.push({role:'bot',content:t3.answer,src:t3.src});
+  persistState();render();
+}
+
+// ════════════════════════════════════════════════════════════════
+// MODALS
+// ════════════════════════════════════════════════════════════════
+function openModalHTML(name,html,opts){
+  opts=opts||{};
+  const root=$('#modalRoot');
+  root.innerHTML=`<div class="modal-bg" onclick="${opts.noClose?'':'closeModal()'}"><div class="modal" style="${opts.wide?'max-width:920px':''}" onclick="event.stopPropagation()">
+    <div class="modal-h"><h3 style="font-family:var(--serif);font-size:16px;color:var(--brass)">${name}</h3>${opts.noClose?'':'<button class="modal-close" onclick="closeModal()">×</button>'}</div>
+    <div class="modal-b">${html}</div>
+  </div></div>`;
+}
+function openModal(kind){
+  if(kind==='settings'){
+    const s=state.settings;
+    openModalHTML('settings',`<form onsubmit="event.preventDefault();onSettingsSave(this)">
+      <div class="field"><label>Engine name (forkable brand)</label><input name="engineName" value="${esc(s.engineName)}"></div>
+      <h3 style="font-family:var(--serif);font-size:14px;color:var(--brass);margin:12px 0 6px">BYOK API keys (T3 fallback)</h3>
+      <div class="row"><div class="field"><label>Anthropic key</label><input name="anthropicKey" type="password" value="${esc(s.anthropicKey)}" placeholder="sk-ant-..."></div><div class="field"><label>OpenAI key</label><input name="openaiKey" type="password" value="${esc(s.openaiKey)}" placeholder="sk-..."></div></div>
+      <div class="row"><div class="field"><label>Gemini key</label><input name="geminiKey" type="password" value="${esc(s.geminiKey)}"></div><div class="field"><label>OpenRouter key</label><input name="openrouterKey" type="password" value="${esc(s.openrouterKey)}" placeholder="sk-or-..."></div></div>
+      <div class="field"><label><input type="checkbox" name="auditChain" ${s.auditChain?'checked':''}> Audit chain (Mansoor P3) — recommended ON for FCA SYSC retention</label></div>
+      <div style="display:flex;gap:6px;margin-top:14px;flex-wrap:wrap">
+        <button class="btn primary" type="submit">save</button>
+        <button type="button" class="btn ghost" onclick="closeModal()">cancel</button>
+        <button type="button" class="btn" onclick="exportAll()">↓ export all (JSON)</button>
+        <button type="button" class="btn" onclick="importAll()">↑ import (JSON)</button>
+        <button type="button" class="btn danger" onclick="wipeAll()">wipe device</button>
+      </div>
+    </form>`);
+  } else if(kind==='audit'){
+    const recent=state.audit.slice(-200).reverse();
+    openModalHTML('audit chain',`<div style="margin-bottom:10px;font-family:var(--mono);font-size:11px;color:var(--cream-muted)">${state.audit.length.toLocaleString('en-GB')} entries · prevHash chained · 6yr retention · FCA SYSC</div>
+      <div style="display:flex;gap:6px;margin-bottom:10px"><button class="btn sm" onclick="exportAudit()">↓ export full chain (.json)</button><button class="btn sm" onclick="verifyAudit()">↻ verify chain</button></div>
+      ${recent.length?recent.map(e=>`<div class="audit-entry"><div><span class="a-action">${esc(e.action)}</span> · ${fmtDateTime(e.ts)} · #${e.i}</div><div class="a-meta">client:${esc(e.clientId||'—')} adviser:${esc(e.adviserId||'—')} · prevHash:${esc(e.prevHash?.slice(0,12)||'∅')}… docHash:${esc(e.docHash.slice(0,12))}…</div>${e.reasoning?`<div class="a-reason">${esc(e.reasoning)}</div>`:''}</div>`).join(''):'<div class="kpi"><span class="l">No audit entries yet.</span></div>'}`);
+  }
+}
+function closeModal(){const r=$('#modalRoot');r.innerHTML=''}
+async function onSettingsSave(formEl){
+  const fd=new FormData(formEl);
+  Object.assign(state.settings,{
+    engineName:fd.get('engineName')||'FallInsuranceOnboard',
+    anthropicKey:fd.get('anthropicKey')||'',openaiKey:fd.get('openaiKey')||'',
+    geminiKey:fd.get('geminiKey')||'',openrouterKey:fd.get('openrouterKey')||'',
+    auditChain:!!fd.get('auditChain')
+  });
+  await persistState();closeModal();render();toast('Settings saved');
+}
+
+// ════════════════════════════════════════════════════════════════
+// EXPORT / IMPORT / WIPE / AUDIT VERIFY
+// ════════════════════════════════════════════════════════════════
+function exportAll(){
+  const blob=new Blob([JSON.stringify({tool:TOOLNAME,version:VERSION,exportedAt:now(),state,audit:state.audit},null,2)],{type:'application/json'});
+  const u=URL.createObjectURL(blob);const a=document.createElement('a');a.href=u;a.download=`${TOOLNAME}-export-${fmtDateISO(now())}.json`;a.click();setTimeout(()=>URL.revokeObjectURL(u),1500);
+  toast('Exported');
+}
+function importAll(){
+  const inp=document.createElement('input');inp.type='file';inp.accept='application/json';
+  inp.onchange=async e=>{
+    const f=e.target.files[0];if(!f)return;
+    try{
+      const data=JSON.parse(await f.text());
+      if(data.tool!==TOOLNAME&&!confirm('File is from a different tool — import anyway?'))return;
+      if(data.state){Object.assign(state,data.state);await persistState()}
+      if(data.audit){for(const e of data.audit){await idbPut('audit',e)}state.audit=await idbAll('audit');state.audit.sort((a,b)=>a.i-b.i)}
+      toast('Imported');render();
+    }catch(e){toast('Import failed: '+e.message)}
+  };inp.click();
+}
+async function wipeAll(){
+  if(!confirm('Wipe ALL device state? clients, advisers, firm, documents, audit — gone. Type-confirm by clicking OK on the next prompt.'))return;
+  if(prompt('Type WIPE to confirm:')!=='WIPE')return;
+  await idbClear('state');await idbClear('audit');await idbClear('documents');
+  localStorage.removeItem(STORE+'.state');location.reload();
+}
+function exportAudit(){
+  const blob=new Blob([JSON.stringify(state.audit,null,2)],{type:'application/json'});
+  const u=URL.createObjectURL(blob);const a=document.createElement('a');a.href=u;a.download=`${TOOLNAME}-audit-${fmtDateISO(now())}.json`;a.click();setTimeout(()=>URL.revokeObjectURL(u),1500);toast('Audit exported');
+}
+async function verifyAudit(){
+  let prev='';let broken=0;
+  for(const e of state.audit){
+    if(e.prevHash!==prev){broken++;continue}
+    const recomputed=await sha256(JSON.stringify({prevHash:e.prevHash,ts:e.ts,action:e.action,clientId:e.clientId,payload:e.payload}));
+    if(recomputed!==e.docHash){broken++;continue}
+    prev=e.docHash;
+  }
+  toast(broken===0?`Chain intact · ${state.audit.length} entries verified`:`Chain broken · ${broken} bad entries`);
+}
+
+// ════════════════════════════════════════════════════════════════
+// DEMO SEED · "Marcus Osei rule" · overwriteable
+// ════════════════════════════════════════════════════════════════
+async function seedDemoIfEmpty(){
+  if(state.settings.isDemoSeeded||state.clients.length||state.advisers.length||state.firm){return}
+  const adv=newAdviserRec();
+  adv.name='Demo Adviser';adv.email='demo@firm';adv.fcaRefNo='DEMO123';adv.smcrRole='IDD-CONDUCT';adv.cpdHours=18;adv.iddCompliance={attested:true,attestedAt:now(),productOversightTraining:true,registeredAs:'individual'};
+  state.advisers.push(adv);
+  const f=newFirmRec();
+  f.name='Demo Brokers Ltd';f.fcaRefNo='DEMO0001';f.network='direct';f.piInsurer='Demo PI Provider';f.piPolicyNo='DEMO-PI-001';f.piExpiresAt=addDays(now(),365);f.piIndemnityLimit=1500000;
+  f.iddAttested=true;f.iddAttestedAt=now();f.setupCompletedAt=now();
+  state.firm=f;
+  const c=newClientRec();
+  c.app.isDemo=true;c.adviserId=adv.id;c.firmId=f.id;
+  c.entityType='entity';c.customerCategory='commercial';
+  c.entityName='DEMO · Patel Wealth Ltd';c.tradingName='Patel Wealth';c.companiesHouseNo='12345678';c.vatNumber='GB123456789';c.industry='Mid-tier UK SaaS publisher';c.industrySIC='62012';c.incorporationDate='2020-01-15';
+  c.email='hello@patelwealth.demo';c.phone='+44 7700 900000';
+  c.address={line1:'12 High Street',line2:'',city:'London',region:'England',postcode:'SW1A 1AA',country:'GB',since:'2020-06-01'};
+  c.businessProfile={turnover:1800000,headcount:14,sector:'SaaS publishing',priorInsurerHistory:'Aviva · 3yrs · clean',priorClaimsCount5y:1,priorClaimsTotal5y:2400,contractRequirements:'Largest client demands £10M PI / £5M cyber'};
+  c.demandsAndNeeds={productClasses:['PI','cyber','EL','PL','commercial-property'],eventsOfConcern:'Cyber incident · GDPR breach · contractual PI claim · employee injury at office',pastClaims:'One PL claim 2023 (£2.4k, slip at HQ open day, settled)',contractualRequirements:'£10M PI per agreement w/ largest client; £5M cyber per same; standard EL £10M',capacityToBearLoss:'Excess up to £5k each-claim acceptable; not aggregate',coverSought:'PI £10M; cyber £5M w/ ransomware sub-limit; EL/PL/property bundled',adviceBasis:'advisory',answers:{}};
+  c.kyc={status:'verified',riskGrade:'medium',pepFlag:false,pepDetails:'',sanctionsStatus:'clear',sanctionsCheckedAt:now(),sanctionsCheckedBy:adv.id,
+    sourceOfFunds:'business',sourceOfFundsNotes:'Trading profits + retained earnings',sourceOfWealth:'',sourceOfWealthNotes:'',
+    vulnerableCustomerFlag:false,vulnerabilityCategory:'',vulnerabilityNotes:'',vulnerabilityType:'permanent',
+    documentsHeld:[],lastReviewAt:now(),nextReviewDue:addDays(now(),365),amlTriggered:true,
+    amlTriggerReason:'Commercial entity — CDD always required to identify beneficial owners (MLR 2017 reg.5(1)(b), reg.28(4))',
+    beneficialOwners:[{name:'Priya Patel',dob:'1980-03-14',nationality:'GB',pct:60,pep:false,role:'Director · Founder'},{name:'Raj Patel',dob:'1982-07-22',nationality:'GB',pct:40,pep:false,role:'Director · CTO'}],
+    pscDirectors:[]};
+  c.app.onboardCompleted=true;c.engagement={startedAt:now(),type:'ongoing',feeBasis:'commission',feeAgreementHash:'',feeAgreementSignedAt:null,initialFee:0,ongoingFee:0,nextReviewDue:addDays(now(),365)};
+  state.clients.push(c);
+  state.settings.isDemoSeeded=true;
+  await persistState();
+  await appendAudit('firm.updated',{reasoning:'Demo firm seeded · overwrite via Firm tab',payload:{id:f.id}});
+  await appendAudit('adviser.created',{adviserId:adv.id,reasoning:'Demo adviser seeded',payload:{id:adv.id,name:adv.name}});
+  await appendAudit('client.created',{clientId:c.id,adviserId:adv.id,reasoning:'Demo client seeded · Marcus Osei rule · overwrite on first real client',payload:{id:c.id,name:clientDisplayName(c),category:c.customerCategory,kycStatus:c.kyc.status,risk:c.kyc.riskGrade}});
+}
+
+// ════════════════════════════════════════════════════════════════
+// BOOT
+// ════════════════════════════════════════════════════════════════
+async function boot(){
+  await openDB();await loadState();
+  if(!state.settings.isDemoSeeded&&!state.clients.length&&!state.firm)await seedDemoIfEmpty();
+  bcInit();
+  render();
+  console.log(`[${TOOLNAME}] v${VERSION} · prime ${PRIME} · sovereign · ${state.clients.length} clients · ${state.audit.length} audit entries`);
+}
+window.addEventListener('DOMContentLoaded',boot);
+
+// expose for debugging + external integration
+window.FALLINSURANCEONBOARD={get state(){return state},newClient,openClient,setTab,exportAll,verifyAudit,TOOLNAME,VERSION,PRIME};
+</script>
+<div class="foot">◊ FallInsuranceOnboard · v${VERSION} · prime 839 · sovereign · MIT licence · part of <a href="https://github.com/sjgant80-hub">sjgant80-hub</a> insurance-firm bundle (829 / 839 / 853 / 857)</div>
+</body>
+</html>
+
