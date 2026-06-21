@@ -44,7 +44,7 @@ Pure GI consumer products under thresholds → no statutory CDD but ICOBS conduc
 
 Drop a file in step 9 (passport, driving licence, utility, bank statement, incorporation cert, Companies House extract, PSC register, prior claims letter, survey report, accounts, SoF evidence, other). Stored as Blob in IDB. SHA-256 computed on capture. Expiry tracked per doc type (passport 10y, utility/bank 90d, etc.). Never uploaded anywhere.
 
-### Audit chain (Mansoor P3)
+### Audit chain (P3)
 
 Every write appends `{ i, ts, tool, adviserId, clientId, action, reasoning, configVersion, prevHash, docHash, payload }`. `docHash = sha256(prevHash + ts + action + clientId + payload)`. Tampering with any entry breaks the chain — `Verify chain` button in the audit modal proves integrity.
 
