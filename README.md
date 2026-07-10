@@ -10,7 +10,7 @@ Live: <https://sjgant80-hub.github.io/fallinsuranceonboard/>
 
 ## For the end user · the 30-second pitch
 
-You're onboarding a new commercial client. Smart Search wants £2-£10 per CDD check. Capquest wants £200/month for AML. You're juggling spreadsheets, PDFs and three SaaS tabs. FallInsuranceOnboard is one HTML file that runs in your browser and handles the whole 10-step IDD-shaped flow — customer category, identity, business profile, demands & needs (IDD Art 20), AML CDD where statutorily triggered, PEP & sanctions, vulnerable customer (FG21/1), document capture with SHA-256 hashing, all chained into a 6-year audit log per FCA SYSC.
+You're onboarding a new commercial client. Smart Search wants TBA-TBA per CDD check. Capquest wants TBAnth for AML. You're juggling spreadsheets, PDFs and three SaaS tabs. FallInsuranceOnboard is one HTML file that runs in your browser and handles the whole 10-step IDD-shaped flow — customer category, identity, business profile, demands & needs (IDD Art 20), AML CDD where statutorily triggered, PEP & sanctions, vulnerable customer (FG21/1), document capture with SHA-256 hashing, all chained into a 6-year audit log per FCA SYSC.
 
 Client records, beneficial owners, PSC details, demands & needs statements, KYC documents — everything stored in your browser's IndexedDB. Never uploaded.
 
@@ -33,8 +33,8 @@ The wizard captures the structured intake for 13 product classes (commercial pro
 
 CDD only triggers where statute requires:
 - **Commercial entities** — always (BO discovery)
-- **Life insurance** — annual premium >£1k or single premium >£2.5k
-- **Aggregate GI premium** ≥£15k (EDD trigger)
+- **Life insurance** — annual premium >TBAk or single premium >TBAk
+- **Aggregate GI premium** ≥TBAk (EDD trigger)
 - Any **PEP**
 - Any **high-risk jurisdiction**
 
@@ -110,7 +110,7 @@ Step 4 (business profile) auto-skipped for consumer/individual clients.
 - Large-risk customer +1 · Entity w/o Companies House no +1
 - Director sanctions match +4 · Director PEP +2
 - High-scrutiny source of funds (gift/business-sale/other) +1
-- Turnover >£10M +1 · High-risk industry SIC +1
+- Turnover >TBAM +1 · High-risk industry SIC +1
 - ≥5 = high · ≥2 = medium · else low
 
 ### AML trigger logic

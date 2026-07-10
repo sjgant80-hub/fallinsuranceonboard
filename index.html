@@ -258,22 +258,19 @@ input[type=radio]{width:auto;margin-right:6px;accent-color:var(--brass)}
     'llama-3b':  { id: 'Llama-3.2-3B-Instruct-q4f16_1-MLC',   size: '~2GB',   label: '3B · balanced · default · most laptops' },
     'qwen-7b':   { id: 'Qwen2.5-7B-Instruct-q4f16_1-MLC',     size: '~5GB',   label: '7B · capable · needs decent GPU (M-series Mac / 8GB+ VRAM)' },
     'llama-8b':  { id: 'Llama-3.1-8B-Instruct-q4f16_1-MLC',   size: '~5GB',   label: '8B · common · needs decent GPU' },
-    'llama-70b': { id: 'Llama-3.1-70B-Instruct-q4f16_1-MLC',  size: '~40GB',  label: '70B · frontier · needs serious GPU + 64GB+ RAM' },
-  };
+    'llama-70b': { id: 'Llama-3.1-70B-Instruct-q4f16_1-MLC',  size: '~40GB',  label: '70B · frontier · needs serious GPU + 64GB+ RAM' }};
   const DEFAULT_MODEL = 'llama-3b';
 
   const T3_PROVIDERS = {
     anthropic: { label: 'Anthropic Claude', models: ['claude-sonnet-4-5','claude-opus-4-7','claude-haiku-4-5'], default: 'claude-sonnet-4-5', url: 'https://api.anthropic.com/v1/messages' },
     openai:    { label: 'OpenAI',           models: ['gpt-4o','gpt-4o-mini','o1-mini'],                          default: 'gpt-4o-mini',      url: 'https://api.openai.com/v1/chat/completions' },
-    google:    { label: 'Google Gemini',    models: ['gemini-1.5-pro','gemini-1.5-flash','gemini-2.0-flash-exp'], default: 'gemini-1.5-flash', url: 'https://generativelanguage.googleapis.com/v1beta/models/' },
-  };
+    google:    { label: 'Google Gemini',    models: ['gemini-1.5-pro','gemini-1.5-flash','gemini-2.0-flash-exp'], default: 'gemini-1.5-flash', url: 'https://generativelanguage.googleapis.com/v1beta/models/' }};
 
   // ─── State ───────────────────────────────────────────────────────
   const STATE = {
     config: loadConfig(),
     ai: { ready: false, loading: false, progress: 0, engine: null, model: null },
-    mesh: { active: false, peers: new Map(), bc: null, signal: null },
-  };
+    mesh: { active: false, peers: new Map(), bc: null, signal: null }};
 
   function loadConfig() {
     try { return JSON.parse(localStorage.getItem('fall-kit.config') || '{}'); }
@@ -340,8 +337,7 @@ input[type=radio]{width:auto;margin-right:6px;accent-color:var(--brass)}
     if (tier === 'T2' && STATE.ai.ready && STATE.ai.engine) {
       const r = await STATE.ai.engine.chat.completions.create({
         messages: [{ role: 'system', content: systemPrompt }, { role: 'user', content: userMsg }],
-        max_tokens: maxTokens,
-      });
+        max_tokens: maxTokens});
       return r.choices[0].message.content;
     }
     if (tier === 'T3' && STATE.config.api_key && STATE.config.api_provider) {
@@ -358,8 +354,7 @@ input[type=radio]{width:auto;margin-right:6px;accent-color:var(--brass)}
       const r = await fetch(T3_PROVIDERS.anthropic.url, {
         method: 'POST',
         headers: { 'content-type': 'application/json', 'x-api-key': key, 'anthropic-version': '2023-06-01' },
-        body: JSON.stringify({ model, max_tokens: maxTokens, system: sys, messages: [{ role: 'user', content: msg }] }),
-      });
+        body: JSON.stringify({ model, max_tokens: maxTokens, system: sys, messages: [{ role: 'user', content: msg }] })});
       if (!r.ok) throw new Error('Anthropic ' + r.status + ': ' + (await r.text()).slice(0, 200));
       const j = await r.json();
       return j.content[0].text;
@@ -368,8 +363,7 @@ input[type=radio]{width:auto;margin-right:6px;accent-color:var(--brass)}
       const r = await fetch(T3_PROVIDERS.openai.url, {
         method: 'POST',
         headers: { 'content-type': 'application/json', 'Authorization': 'Bearer ' + key },
-        body: JSON.stringify({ model, max_tokens: maxTokens, messages: [{ role: 'system', content: sys }, { role: 'user', content: msg }] }),
-      });
+        body: JSON.stringify({ model, max_tokens: maxTokens, messages: [{ role: 'system', content: sys }, { role: 'user', content: msg }] })});
       if (!r.ok) throw new Error('OpenAI ' + r.status);
       const j = await r.json();
       return j.choices[0].message.content;
@@ -378,8 +372,7 @@ input[type=radio]{width:auto;margin-right:6px;accent-color:var(--brass)}
       const r = await fetch(T3_PROVIDERS.google.url + model + ':generateContent?key=' + encodeURIComponent(key), {
         method: 'POST',
         headers: { 'content-type': 'application/json' },
-        body: JSON.stringify({ contents: [{ role: 'user', parts: [{ text: sys + '\n\n---\n\n' + msg }] }], generationConfig: { maxOutputTokens: maxTokens } }),
-      });
+        body: JSON.stringify({ contents: [{ role: 'user', parts: [{ text: sys + '\n\n---\n\n' + msg }] }], generationConfig: { maxOutputTokens: maxTokens } })});
       if (!r.ok) throw new Error('Google ' + r.status);
       const j = await r.json();
       return j.candidates[0].content.parts[0].text;
@@ -620,8 +613,7 @@ input[type=radio]{width:auto;margin-right:6px;accent-color:var(--brass)}
     openMint: openMint,  // v1.2 · launch kcc-mint with this seed prefilled as parent
     MODELS: WEBLLM_MODELS,
     PROVIDERS: T3_PROVIDERS,
-    state: STATE,
-  };
+    state: STATE};
 })(typeof window !== 'undefined' ? window : globalThis);
 
 </script>
@@ -676,13 +668,12 @@ const TABS=[
  {id:'demands',label:'D&N Library'},
  {id:'firm',label:'Firm'},
  {id:'advisers',label:'Advisers'},
- {id:'qa',label:'IDD Help'},
-];
+ {id:'qa',label:'IDD Help'}];
 
 // AML re-review cadence (days) by risk grade
 const REVIEW_CADENCE={low:730,medium:365,high:180};
 // AML threshold for insurance broker — JMLSG Part II §16 / MLR 2017 reg.8(2)(b)
-// life insurance £1000+, but commercial GI >£15k annual premium typical EDD trigger
+// life insurance TBA0+, but commercial GI >TBAk annual premium typical EDD trigger
 const AML_PREMIUM_THRESHOLD=15000;
 
 const DOC_TYPES=[
@@ -697,8 +688,7 @@ const DOC_TYPES=[
  {v:'survey-report',l:'Risk survey / property report'},
  {v:'accounts',l:'Filed accounts (commercial)'},
  {v:'sof-evidence',l:'Source of funds evidence'},
- {v:'other',l:'Other'},
-];
+ {v:'other',l:'Other'}];
 const DOC_EXPIRY={
  'passport':365*10,'driving-licence':365*10,
  'utility-bill':90,'bank-statement':90,
@@ -723,8 +713,7 @@ const PRODUCT_CLASSES=[
  {v:'travel',l:'Travel',cat:'consumer'},
  {v:'health',l:'Health',cat:'consumer'},
  {v:'pet',l:'Pet',cat:'consumer'},
- {v:'life',l:'Life / IP',cat:'consumer'},
-];
+ {v:'life',l:'Life / IP',cat:'consumer'}];
 
 // SM&CR senior management functions (insurance-specific)
 const SMCR_ROLES=[
@@ -772,8 +761,7 @@ const DN_LIBRARY={
  'Are the premises listed, of unusual construction, or have flat roofs over 25%?',
  'Has the property had subsidence, flood or fire claims in the last 10 years?',
  'Is the premises occupied 24/7 or left unoccupied at periods (>30d trigger)?',
- 'Are there contractual requirements from landlord / mortgagee?',
- ]
+ 'Are there contractual requirements from landlord / mortgagee?']
  },
  'EL':{
  title:'Employers liability',
@@ -783,8 +771,7 @@ const DN_LIBRARY={
  'Do any employees work at height, with hot work, or with heavy machinery?',
  'Do you have any overseas employees or employees travelling abroad?',
  'Have there been any EL claims in the last 5 years?',
- 'Is the statutory £5M minimum sufficient — or do contracts demand £10M?',
- ]
+ 'Is the statutory TBAM minimum sufficient — or do contracts demand TBAM?']
  },
  'PL':{
  title:'Public liability',
@@ -793,8 +780,7 @@ const DN_LIBRARY={
  'What is the maximum limit demanded by any client contract?',
  'Do you work on heritage / listed / high-net-worth properties?',
  'Do you sell, supply or install products (need product liability extension)?',
- 'Have there been any PL/product claims in the last 5 years?',
- ]
+ 'Have there been any PL/product claims in the last 5 years?']
  },
  'motor-fleet':{
  title:'Motor fleet',
@@ -805,8 +791,7 @@ const DN_LIBRARY={
  'Annual mileage estimate per vehicle band?',
  'Use category: own goods / hire & reward / haulage?',
  'Last 5 years claims experience — frequency + cost?',
- 'Telematics installed?',
- ]
+ 'Telematics installed?']
  },
  'cyber':{
  title:'Cyber',
@@ -816,8 +801,7 @@ const DN_LIBRARY={
  'MFA on all admin accounts? Backups offline / immutable?',
  'EDR / patching cadence? Phishing-resistant authentication?',
  'Prior cyber incidents or notifiable breaches under UK GDPR?',
- 'What sub-limits are required for: ransomware, business interruption, regulatory defence?',
- ]
+ 'What sub-limits are required for: ransomware, business interruption, regulatory defence?']
  },
  'PI':{
  title:'Professional indemnity',
@@ -827,8 +811,7 @@ const DN_LIBRARY={
  'Limit of indemnity — any-one-claim or aggregate (and contract requirements)?',
  'Largest single fee in last 24 months / largest project value?',
  'Any prior claims, complaints or circumstances notified to insurers?',
- 'Retroactive date required (full or limited)?',
- ]
+ 'Retroactive date required (full or limited)?']
  },
  'D&O':{
  title:'Directors & Officers',
@@ -838,8 +821,7 @@ const DN_LIBRARY={
  'Any US exposure (US subsidiary, US revenue, US shareholders)?',
  'Pending litigation, investigations or regulatory enquiries?',
  'Side A / Side B / Side C requirements?',
- 'Run-off cover required for any retiring director?',
- ]
+ 'Run-off cover required for any retiring director?']
  },
  'landlord':{
  title:'Landlord',
@@ -848,19 +830,17 @@ const DN_LIBRARY={
  'Tenant types (AST / HMO / DSS / commercial / student / corporate let)?',
  'Maximum rental income (loss of rent indemnity period)?',
  'Periods of vacancy expected? Property management arrangements?',
- 'EICR / gas safety / fire compliance in date?',
- ]
+ 'EICR / gas safety / fire compliance in date?']
  },
  'home':{
  title:'Home / contents',
  questions:[
- 'Buildings rebuild value / contents value / high-value items list (>£2k)?',
+ 'Buildings rebuild value / contents value / high-value items list (>TBAk)?',
  'Property unoccupied >30 days at any time?',
  'Construction (standard / non-standard / listed / flat roof %)?',
  'Past claims (subsidence, flood, escape of water, theft) in 5 years?',
  'Working from home / running a business from home?',
- 'Specified items / portable cover required (jewellery / cycles / laptops)?',
- ]
+ 'Specified items / portable cover required (jewellery / cycles / laptops)?']
  },
  'motor':{
  title:'Private motor',
@@ -870,8 +850,7 @@ const DN_LIBRARY={
  'Drivers — age, licence type, convictions, accidents in 5 years?',
  'Overnight location (garage / drive / on-road)?',
  'NCD years claimed / earned?',
- 'Telematics / black box acceptable?',
- ]
+ 'Telematics / black box acceptable?']
  },
  'travel':{
  title:'Travel',
@@ -879,8 +858,7 @@ const DN_LIBRARY={
  'Single trip or annual multi-trip? Geographic limits (EU / worldwide / WW excl USA)?',
  'Pre-existing medical conditions for any traveller?',
  'Hazardous activities planned (skiing / scuba / motorbike >125cc)?',
- 'Trip duration limits + maximum age?',
- ]
+ 'Trip duration limits + maximum age?']
  },
  'health':{
  title:'Health',
@@ -889,8 +867,7 @@ const DN_LIBRARY={
  'Pre-existing conditions you want covered?',
  'Hospital list (Standard / Comprehensive / Worldwide)?',
  'Excess preference + outpatient limits?',
- 'Family or individual cover?',
- ]
+ 'Family or individual cover?']
  },
  'pet':{
  title:'Pet',
@@ -898,8 +875,7 @@ const DN_LIBRARY={
  'Species, breed, age + any pre-existing conditions?',
  'Cover type (accident only / 12-month / lifetime)?',
  'Vet fee limit preference + excess?',
- 'Third-party liability (dogs)?',
- ]
+ 'Third-party liability (dogs)?']
  },
  'life':{
  title:'Life / income protection',
@@ -907,8 +883,7 @@ const DN_LIBRARY={
  'Sum assured + term + reason for cover (mortgage / family / business)?',
  'Smoker status + significant medical conditions?',
  'In trust requirement (writing in trust)?',
- 'Critical illness / waiver of premium / IP riders?',
- ]
+ 'Critical illness / waiver of premium / IP riders?']
  }
 };
 
@@ -929,13 +904,11 @@ let state={
  anthropicKey:'',openaiKey:'',geminiKey:'',openrouterKey:'',
  auditChain:true,
  isDemoSeeded:false,
- setupDismissed:false,
- },
+ setupDismissed:false},
  ui:{
  filter:{category:'',industry:'',policiesMin:0,due:false,kyc:''},
  wizard:null,
- activeClient:null,
- }
+ activeClient:null}
 };
 
 // ════════════════════════════════════════════════════════════════
@@ -993,8 +966,7 @@ async function persistState(){
  clients:state.clients,
  policies:state.policies,
  chat:state.chat,
- settings:state.settings,
- };
+ settings:state.settings};
  try{localStorage.setItem(STORE+'.state',JSON.stringify(snap))}catch(e){}
  return idbPut('state',snap,'main');
 }
@@ -1262,7 +1234,7 @@ function suggestRiskGrade(c){
  if((k.pscDirectors||[]).some(d=>d.pep)){score+=2;reasons.push('Director PEP (+2)')}
  if(['gift','business-sale','other'].includes(k.sourceOfFunds)){score+=1;reasons.push('Higher-scrutiny source of funds (+1)')}
  // turnover-based risk for commercial
- if(c.entityType==='entity'&&(c.businessProfile?.turnover||0)>10000000){score+=1;reasons.push('Turnover >£10M (+1)')}
+ if(c.entityType==='entity'&&(c.businessProfile?.turnover||0)>10000000){score+=1;reasons.push('Turnover >TBAM (+1)')}
  // industry risk
  const highIndustry=['41200','43999','56101','56210'];
  if(highIndustry.includes(c.industrySIC)){score+=1;reasons.push('Higher-risk industry sector (+1)')}
@@ -1276,7 +1248,7 @@ function checkAmlTrigger(c){
  // commercial — always do CDD on entities (corp veil + BO discovery)
  return {triggered:true, reason:'Commercial entity — CDD always required to identify beneficial owners (MLR 2017 reg.5(1)(b), reg.28(4))'};
  }
- // individuals — life products with annual premium > £1k or single premium > £2.5k
+ // individuals — life products with annual premium > TBAk or single premium > TBAk
  const lifeProducts=(c.demandsAndNeeds?.productClasses||[]).filter(p=>['life'].includes(p));
  if(lifeProducts.length>0){
  return {triggered:true, reason:'Life / pure-protection product (MLR 2017 reg.8(2)(b); JMLSG Part II §16 — premium thresholds apply)'};
@@ -1496,7 +1468,7 @@ function renderDemands(){
 function renderFirm(){
  const f=state.firm||newFirmRec();
  return `${DISCLAIMER}
- <div class="section-h"><div><h2>Firm</h2><div class="sub">FCA-regulated insurance broker · IDD attestation · PI £1.5M minimum</div></div></div>
+ <div class="section-h"><div><h2>Firm</h2><div class="sub">FCA-regulated insurance broker · IDD attestation · PI TBAM minimum</div></div></div>
  <form class="card" onsubmit="event.preventDefault();onFirmSave(this)" style="max-width:780px">
  <div class="row"><div class="field"><label>Firm name <span class="req">*</span></label><input name="name" value="${esc(f.name)}" required></div><div class="field"><label>Trading name</label><input name="tradingName" value="${esc(f.tradingName)}"></div></div>
  <div class="row"><div class="field"><label>FCA ref <span class="req">*</span></label><input name="fcaRefNo" value="${esc(f.fcaRefNo)}" required placeholder="123456"></div><div class="field"><label>Companies House no</label><input name="companiesHouseNo" value="${esc(f.companiesHouseNo)}"></div></div>
@@ -1506,7 +1478,7 @@ function renderFirm(){
  <div class="row3"><div class="field"><label>City</label><input name="rCity" value="${esc(f.registeredAddress?.city)}"></div><div class="field"><label>Postcode</label><input name="rPostcode" value="${esc(f.registeredAddress?.postcode)}"></div><div class="field"><label>Country</label><input name="rCountry" value="${esc(f.registeredAddress?.country||'GB')}"></div></div>
  <h3 style="font-family:var(--serif);font-size:14px;margin:14px 0 8px;color:var(--brass)">Professional indemnity</h3>
  <div class="row3"><div class="field"><label>PI insurer</label><input name="piInsurer" value="${esc(f.piInsurer)}"></div><div class="field"><label>Policy no</label><input name="piPolicyNo" value="${esc(f.piPolicyNo)}"></div><div class="field"><label>Expiry</label><input type="date" name="piExpiresAt" value="${f.piExpiresAt?fmtDateISO(f.piExpiresAt):''}"></div></div>
- <div class="field"><label>Indemnity limit (£) — IDD minimum £1.3M each claim / £1.95M aggregate (uplifted to £1.5M each in spec)</label><input type="number" name="piIndemnityLimit" value="${f.piIndemnityLimit||1500000}" min="1300000"></div>
+ <div class="field"><label>Indemnity limit (£) — IDD minimum TBAM each claim / TBAM aggregate (uplifted to TBAM each in spec)</label><input type="number" name="piIndemnityLimit" value="${f.piIndemnityLimit||1500000}" min="1300000"></div>
  <h3 style="font-family:var(--serif);font-size:14px;margin:14px 0 8px;color:var(--brass)">IDD attestation</h3>
  <div class="field"><label><input type="checkbox" name="iddAttested" ${f.iddAttested?'checked':''}> The firm attests to compliance with the Insurance Distribution Directive (IDD) and FCA ICOBS</label></div>
  <div class="row"><div class="field"><label>Professional body</label><select name="professionalBody"><option ${f.professionalBody==='CII'?'selected':''}>CII</option><option ${f.professionalBody==='BIBA'?'selected':''}>BIBA</option><option ${f.professionalBody==='LIIBA'?'selected':''}>LIIBA</option><option ${f.professionalBody==='other'?'selected':''}>other</option></select></div><div class="field"><label>Setup completed at</label><input value="${fmtDateTime(f.setupCompletedAt)}" disabled></div></div>
@@ -1775,8 +1747,8 @@ function stepHTML(n,c,isCommercial){
  case 1: return `<h3>Customer category</h3><div class="step-sub">IDD Article 20 distinguishes consumer / commercial / large-risk customers. This drives downstream conduct (ICOBS) + CDD requirements.</div>
  <div class="cat-cards">
  <div class="cat-card ${c.customerCategory==='consumer'?'active':''}" onclick="document.querySelector('[name=customerCategory][value=consumer]').click()"><div class="ct">Consumer</div><div class="cd">An individual buying insurance wholly or mainly outside of trade, business or profession. Higher conduct protections under ICOBS.</div></div>
- <div class="cat-card ${c.customerCategory==='commercial'?'active':''}" onclick="document.querySelector('[name=customerCategory][value=commercial]').click()"><div class="ct">Commercial</div><div class="cd">Business / SME with annual premium under £600k for commercial property &amp; similar limits per class. Reduced ICOBS but full IDD.</div></div>
- <div class="cat-card ${c.customerCategory==='large-risk'?'active':''}" onclick="document.querySelector('[name=customerCategory][value=large-risk)']?.click?.()||(document.querySelector('[name=customerCategory][value=large-risk]')||{}).click?.()"><div class="ct">Large-risk</div><div class="cd">Marine / aviation / transport / large commercial above turnover £12.5M, headcount 250, balance sheet £6.2M. Most ICOBS dis-applied.</div></div>
+ <div class="cat-card ${c.customerCategory==='commercial'?'active':''}" onclick="document.querySelector('[name=customerCategory][value=commercial]').click()"><div class="ct">Commercial</div><div class="cd">Business / SME with annual premium under TBAk for commercial property &amp; similar limits per class. Reduced ICOBS but full IDD.</div></div>
+ <div class="cat-card ${c.customerCategory==='large-risk'?'active':''}" onclick="document.querySelector('[name=customerCategory][value=large-risk)']?.click?.()||(document.querySelector('[name=customerCategory][value=large-risk]')||{}).click?.()"><div class="ct">Large-risk</div><div class="cd">Marine / aviation / transport / large commercial above turnover TBAM, headcount 250, balance sheet TBAM. Most ICOBS dis-applied.</div></div>
  <div class="cat-card" onclick="document.querySelector('[name=entityType][value=entity]').click()"><div class="ct">Entity type → ${c.entityType}</div><div class="cd">${c.entityType==='entity'?'Trading as a company / partnership / LLP / charity / trust.':'Individual person (may be sole trader).'}</div></div>
  </div>
  <div style="display:none">
@@ -1915,19 +1887,18 @@ async function commitWizard(){
 // IDD Q&A · T0 router + T3 BYOK cascade
 // ════════════════════════════════════════════════════════════════
 const T0_RULES=[
- {k:['consumer','commercial','large risk','large-risk','customer category','category'],a:'**Customer category (IDD §17(2)).** Three categories: (1) *consumer* — an individual buying mainly outside trade/business/profession; full ICOBS protections. (2) *commercial customer* — SME below large-risk thresholds; reduced ICOBS, full IDD. (3) *large risk* — marine/aviation/transport OR turnover >£12.5M, headcount >250, balance sheet >£6.2M; most ICOBS disapplied. Set on the client record in step 1 of the wizard.'},
+ {k:['consumer','commercial','large risk','large-risk','customer category','category'],a:'**Customer category (IDD §17(2)).** Three categories: (1) *consumer* — an individual buying mainly outside trade/business/profession; full ICOBS protections. (2) *commercial customer* — SME below large-risk thresholds; reduced ICOBS, full IDD. (3) *large risk* — marine/aviation/transport OR turnover >TBAM, headcount >250, balance sheet >TBAM; most ICOBS disapplied. Set on the client record in step 1 of the wizard.'},
  {k:['demands','needs','idd 20','article 20'],a:'**Demands & Needs (IDD Article 20).** Every insurance recommendation must be consistent with the customer\'s demands and needs. Capture: events of concern, past claims, contractual requirements, capacity to bear loss, cover sought, advice basis (advisory/non-advisory/execution-only). Output is the *Demands & Needs Statement* attached to the policy — sibling tool `fallinsurancepaper` renders the formal version.'},
- {k:['cdd','aml','when','trigger'],a:'**When does AML CDD trigger for an insurance broker?** JMLSG Part II §16 / MLR 2017 reg.8(2)(b): (1) any commercial entity client (always — BO discovery), (2) life insurance with annual premium >£1k or single premium >£2.5k, (3) aggregate GI premium ≥£15k typical EDD trigger, (4) any PEP, (5) any high-risk jurisdiction. Pure GI consumer products under thresholds do NOT trigger statutory CDD — but ICOBS conduct still applies.'},
+ {k:['cdd','aml','when','trigger'],a:'**When does AML CDD trigger for an insurance broker?** JMLSG Part II §16 / MLR 2017 reg.8(2)(b): (1) any commercial entity client (always — BO discovery), (2) life insurance with annual premium >TBAk or single premium >TBAk, (3) aggregate GI premium ≥TBAk typical EDD trigger, (4) any PEP, (5) any high-risk jurisdiction. Pure GI consumer products under thresholds do NOT trigger statutory CDD — but ICOBS conduct still applies.'},
  {k:['pep','politically exposed'],a:'**PEP definition (MLR 2017 reg.35(12)).** A natural person entrusted with prominent public functions — heads of state, government ministers, judges, MPs, senior military, central bank board, ambassadors, senior managers of state-owned enterprises. Plus family members + close associates. EDD required: senior management approval, source of wealth, enhanced ongoing monitoring.'},
  {k:['sanctions','ofsi','consolidated list'],a:'**Sanctions screen.** Mandatory pre-bind: (1) UK Sanctions List (gov.uk), (2) OFSI Consolidated List, (3) EU list (for legacy + EU exposures), (4) OFAC if any US nexus. Match = STOP, escalate to MLRO, do not bind, file SAR if appropriate. Re-screen on: renewal, MTA, named-driver add, relationship change.'},
  {k:['vulnerable','fg21','fg 21/1','vulnerability'],a:'**Vulnerable customer · FCA FG21/1.** Four drivers: (1) **health** — physical/mental/cognitive conditions, (2) **life events** — bereavement, divorce, job loss, (3) **resilience** — low income, debt, no savings, (4) **capability** — language, literacy, digital. Document the type (permanent/temporary/situational) + adjustments made (longer time, alternative comms, third-party support). Consumer Duty (PRIN 12) makes this an outcome-tested obligation, not a box-tick.'},
  {k:['icobs','conduct of business'],a:'**ICOBS** = Insurance: Conduct of Business sourcebook. Key sections for brokers: ICOBS 2 (general principles), ICOBS 4 (info about firm + capacity), ICOBS 5 (identify demands & needs + suitability statement for advised sales), ICOBS 6 (info about policy), ICOBS 7 (cancellation rights), ICOBS 8 (claims handling). Reduced ICOBS regime for commercial customers; mostly disapplied for large risks.'},
- {k:['pi minimum','pii minimum','minimum cover','professional indemnity'],a:'**PI minimum (FCA IPRU-INV 13.1).** Insurance distribution firms — Article 10(4) IDD minimum: **€1,300,380 each claim** and **€1,924,560 aggregate**. FCA uplifts in GBP — current floor £1.5M each / £3M aggregate is a safe target. Mortgage/IFA brokers have separate thresholds. Track expiry in the Firm tab; renewal lapse = activity must cease.'},
+ {k:['pi minimum','pii minimum','minimum cover','professional indemnity'],a:'**PI minimum (FCA IPRU-INV 13.1).** Insurance distribution firms — Article 10(4) IDD minimum: **€1,300,380 each claim** and **€1,924,560 aggregate**. FCA uplifts in GBP — current floor TBAM each / TBAM aggregate is a safe target. Mortgage/IFA brokers have separate thresholds. Track expiry in the Firm tab; renewal lapse = activity must cease.'},
  {k:['cdd directors','beneficial owners','psc','25%','beneficial ownership'],a:'**Beneficial owners (commercial CDD).** MLR 2017 reg.5(1)(b) + reg.28(4): identify any natural person owning **>25%** (shares/voting rights) or otherwise exercising control. Reg.28(8): take reasonable measures to verify. Capture: name, DOB, nationality, % held, role. Cross-check against Companies House PSC register + capture an extract in step 9. PEP-screen each BO.'},
  {k:['idd article 20','article 20','d&n'],a:'**IDD Article 20** is the operational anchor: distribute only products consistent with client demands & needs. Captured in wizard step 5 + persisted on the client record. Sibling tool `fallinsurancepaper` (prime 853) renders the formal Demands & Needs Statement that goes out alongside the policy.'},
  {k:['idd article 17','article 17','non-advisory','execution-only'],a:'**IDD Article 17 advisory vs non-advisory.** Three modes: (a) *advisory* — broker recommends a specific product; (b) *non-advisory* — broker presents options without recommendation; (c) *execution-only* — client chooses, broker just transacts. Each carries different obligations under ICOBS 5 + 6. Captured per-client in the D&N step.'},
- {k:['pog','product oversight','product governance','idd pog'],a:'**IDD Product Oversight & Governance (POG).** Article 25 + FCA PROD 4: manufacturers + distributors must operate POG arrangements — identify target market, test product, review periodically. Brokers acting as co-manufacturers (rare) take on full POG. Distribution-only brokers must understand the target market and not distribute outside it.'},
-];
+ {k:['pog','product oversight','product governance','idd pog'],a:'**IDD Product Oversight & Governance (POG).** Article 25 + FCA PROD 4: manufacturers + distributors must operate POG arrangements — identify target market, test product, review periodically. Brokers acting as co-manufacturers (rare) take on full POG. Distribution-only brokers must understand the target market and not distribute outside it.'}];
 function answerT0(q){
  const ql=q.toLowerCase();
  for(const r of T0_RULES){
@@ -2082,8 +2053,8 @@ async function seedDemoIfEmpty(){
  c.entityName='DEMO · Patel Wealth Ltd';c.tradingName='Patel Wealth';c.companiesHouseNo='12345678';c.vatNumber='GB123456789';c.industry='Mid-tier UK SaaS publisher';c.industrySIC='62012';c.incorporationDate='2020-01-15';
  c.email='hello@patelwealth.demo';c.phone='+44 7700 900000';
  c.address={line1:'12 High Street',line2:'',city:'London',region:'England',postcode:'SW1A 1AA',country:'GB',since:'2020-06-01'};
- c.businessProfile={turnover:1800000,headcount:14,sector:'SaaS publishing',priorInsurerHistory:'Aviva · 3yrs · clean',priorClaimsCount5y:1,priorClaimsTotal5y:2400,contractRequirements:'Largest client demands £10M PI / £5M cyber'};
- c.demandsAndNeeds={productClasses:['PI','cyber','EL','PL','commercial-property'],eventsOfConcern:'Cyber incident · GDPR breach · contractual PI claim · employee injury at office',pastClaims:'One PL claim 2023 (£2.4k, slip at HQ open day, settled)',contractualRequirements:'£10M PI per agreement w/ largest client; £5M cyber per same; standard EL £10M',capacityToBearLoss:'Excess up to £5k each-claim acceptable; not aggregate',coverSought:'PI £10M; cyber £5M w/ ransomware sub-limit; EL/PL/property bundled',adviceBasis:'advisory',answers:{}};
+ c.businessProfile={turnover:1800000,headcount:14,sector:'SaaS publishing',priorInsurerHistory:'Aviva · 3yrs · clean',priorClaimsCount5y:1,priorClaimsTotal5y:2400,contractRequirements:'Largest client demands TBAM PI / TBAM cyber'};
+ c.demandsAndNeeds={productClasses:['PI','cyber','EL','PL','commercial-property'],eventsOfConcern:'Cyber incident · GDPR breach · contractual PI claim · employee injury at office',pastClaims:'One PL claim 2023 (TBAk, slip at HQ open day, settled)',contractualRequirements:'TBAM PI per agreement w/ largest client; TBAM cyber per same; standard EL TBAM',capacityToBearLoss:'Excess up to TBAk each-claim acceptable; not aggregate',coverSought:'PI TBAM; cyber TBAM w/ ransomware sub-limit; EL/PL/property bundled',adviceBasis:'advisory',answers:{}};
  c.kyc={status:'verified',riskGrade:'medium',pepFlag:false,pepDetails:'',sanctionsStatus:'clear',sanctionsCheckedAt:now(),sanctionsCheckedBy:adv.id,
  sourceOfFunds:'business',sourceOfFundsNotes:'Trading profits + retained earnings',sourceOfWealth:'',sourceOfWealthNotes:'',
  vulnerableCustomerFlag:false,vulnerabilityCategory:'',vulnerabilityNotes:'',vulnerabilityType:'permanent',
